@@ -14,7 +14,7 @@ stars, galaxies, universe, NTT, VLT, VLTI, ALMA, ELT, La Silla, Paranal, Garchin
 
 <body>
   
-<!--get language-->
+<!--get language here-->
   <?php
   $lang = $_GET['lang'];
 
@@ -61,8 +61,8 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
     <div class="w3-dropdown-hover w3-display-topright">
       <button class="w3-button w3-black w3-small">Language <i class="arrow down"></i></button>
         <div id="Languages" class="w3-dropdown-content w3-bar-block w3-border">
-          <a href="/?lang=fr" class="w3-bar-item w3-button">Fran&ccedilais</a>
-          <a href="/?lang=en" class="w3-bar-item w3-button">English</a>
+          <a href="./?lang=fr" class="w3-bar-item w3-button">Fran&ccedilais</a>
+          <a href="./?lang=en" class="w3-bar-item w3-button">English</a>
         </div>
     </div>
   </div>
