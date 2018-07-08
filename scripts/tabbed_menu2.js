@@ -1,6 +1,6 @@
 // Tabbed Menu
 function openMenu2(evt, menuName) {
-  var i, x, tablinks;
+  var i, x, tablinks2;
   x = document.getElementsByClassName("menu2");
   for (i = 0; i < x.length; i++) {
      x[i].style.display = "none";
