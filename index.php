@@ -282,12 +282,12 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
 
 
 <!-- Scripts, place somewhere else? -->
-  <script src="scripts/orbits.js"></script>
-  <script src="scripts/slider.js"></script>
-  <script src="scripts/slider2.js"></script>
-  <script src="scripts/tabbed_menu.js"></script>
-  <script src="scripts/tabbed_menu2.js"></script>
-  <script src="scripts/dropdown_menu.js"></script>
+  <script src="dist/orbits.js"></script>
+  <script src="dist/slider.js"></script>
+  <script src="dist/slider2.js"></script>
+  <script src="dist/tabbed_menu.js"></script>
+  <script src="dist/tabbed_menu2.js"></script>
+  <script src="dist/dropdown_menu.js"></script>
 
 </body>
 </html>
