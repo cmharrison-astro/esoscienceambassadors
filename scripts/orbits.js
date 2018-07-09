@@ -1,31 +1,49 @@
+class Planet {
+    constructor(name, htmlElement, a, orbitRadius, da) {
+        this.name = name;
+        this.htmlElement = htmlElement,
+        this.a = a, // in radian
+        this.orbitRadius = orbitRadius,
+        this.da = da, // in radian
+        this.x = 0,
+        this.y = 0;
+        // Center is actualy center (100, 100) minus
+        // half the size of the orbiting object 15x15
+        this.center = { x: (100 - 15), y: (100 - 15) }
 
-console.log('script is here!');
+        // if you know what a, da, x and y represent, please name them something more meaninglyful
+        // I figured out elt and r
+        // the x and y associated with center ARE NOT the same as the x and y associated with Planet
 
-// init part, set your own values
-var sat = {
-    elt: null,
-    a: 0,         // in radian
-    r: 100,       // radius
-    da: 0.05,     // in radian
-    x: 0,
-    y: 0,
-    // Center is actualy center (100, 100) minus
-    // half the size of the orbiting object 15x15
-    center: { x: (100 - 15), y: (100 - 15) }
+        this.move = () => {
+            this.a += this.da
+            this.x = this.center.x + (this.orbitRadius * Math.sin(this.a));
+            this.y = this.center.y + (this.orbitRadius * Math.cos(this.a));
+            this.htmlElement.style.top = this.y + "px";
+            this.htmlElement.style.left = this.x + "px";
+        }
+
+        // this is just for demo purpose - it should output in your browser console
+        this.greeting = () => {
+            console.log('Hi! I\'m ' + this.name + '.');
+        };
+    }
 };
 
-sat.move = function() {
-    // each modification
-    this.a += this.da
-    this.x = this.center.x + (this.r * Math.sin(this.a));
-    this.y = this.center.y + (this.r * Math.cos(this.a));
-    //console.log(this.x, this.y);
-    this.elt.style.top = this.y + "px";
-    this.elt.style.left = this.x + "px";
-};
+// instantiate your object
+// this is where database values will plug in
+const planet1 = new Planet('planet1', document.getElementById('planet1'), 0, 100, 0.05);
+const planet2 = new Planet('planet2', document.getElementById('planet2'), 0, 200, 0.05);
 
-sat.elt = document.getElementById('sat1');
+// this is just for demo purpose - it should output in your browser console
+planet1.greeting();
+planet2.greeting();
 
-var loopTimer = setInterval(function(){
-    sat.move();
+// this function can probably get moved into the class
+const loopTimer = setInterval(function(){
+    planet1.move();
+}, 50); // the function is called every 50 milliseconds
+
+const loopTimer2 = setInterval(function(){
+    planet2.move();
 }, 50);
