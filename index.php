@@ -193,10 +193,63 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
 
       <!-- Animated Exoplanet system -->
       <div id="RAnimation" class="w3-container menu2 w3-padding-48 w3-card">
+
+      <?php
+        //SQL query
+        $sqlSystemProps = "SELECT 
+        star_name, star_name_2, 
+        name_a, name_b, name_c, name_d, name_e, name_f, 
+        mass_a, mass_b, mass_c, mass_d, mass_e, mass_f, 
+        semi_major_axis_a, semi_major_axis_b, semi_major_axis_c, semi_major_axis_d, semi_major_axis_e, semi_major_axis_f,
+        orbital_period_a, orbital_period_b, orbital_period_c, orbital_period_d, orbital_period_e, orbital_period_f
+        FROM exoplanets WHERE star_name_2='$exoName'";
+        $resultSystemProps = $conn->query($sqlSystemProps);
+
+        //If successful query
+        if ($resultSystemProps->num_rows == 1) {
+          $row = $resultSystemProps->fetch_assoc();
+          //Read raw data for planets and put into arrays
+          $planetNames = array($row["name_a"],$row["name_b"],$row["name_c"],$row["name_d"],$row["name_e"],$row["name_f"],$row["name_g"]);
+          $planetDistances = array($row["semi_major_axis_a"],$row["semi_major_axis_b"],$row["semi_major_axis_c"],$row["semi_major_axis_d"],$row["semi_major_axis_e"],$row["semi_major_axis_f"],$row["semi_major_axis_g"]);
+          $planetPeriods = array($row["orbital_period_a"],$row["orbital_period_b"],$row["orbital_period_c"],$row["orbital_period_d"],$row["orbital_period_e"],$row["orbital_period_f"],$row["orbital_period_g"]);
+          $planetMass = array($row["mass_a"],$row["mass_b"],$row["mass_c"],$row["mass_d"],$row["mass_e"],$row["mass_f"],$row["mass_g"]);
+
+          //Count planets
+          $nPlanet = 0;
+          if ($row["name_a"]!=''){$nPlanet++;}
+          if ($row["name_b"]!=''){$nPlanet++;}
+          if ($row["name_c"]!=''){$nPlanet++;}
+          if ($row["name_d"]!=''){$nPlanet++;}
+          if ($row["name_e"]!=''){$nPlanet++;}
+          if ($row["name_f"]!=''){$nPlanet++;}
+          if ($row["name_g"]!=''){$nPlanet++;}
+          
+          //create arrays for css/java parameters
+          $maxPlanetDist = max($planetDistances);
+          $maxPlanetPeriod = max($planetPeriods);
+          $maxPlanetMass = max($planetMass);
+          $planetAvalues = [0,0,0,0,0,0,0];
+          $planetDAvalues = [0,0,0,0,0,0,0];
+          $planetSizeValues = [0,0,0,0,0,0,0];
+
+          echo 'Number of known planets:'.$nPlanet.'<br />';
+          for ($j = 0; $j<$nPlanet; $j++){
+            //calculate css/java parameters based on real data
+            $planetAvalues[$j] = 150*$planetDistances[$j]/$maxPlanetDist;
+            $planetSizeValues[$j] = 50*$planetMass[$j]/$maxPlanetMass;
+            $planetDAvalues[$j] = 0.02*$maxPlanetPeriod/$planetPeriods[$j];
+            echo 'Name='.$planetNames[$j].'; a='.$planetAvalues[$j].' dA='.$planetDAvalues[$j].' dM='.$planetMass[$j].' size='. $planetSizeValues[$j].'<br />';
+          }
+         } else{
+           echo "Problem fetching exoplanet data";
+         }
+      ?>
+
         <div class="space">  
-          <div class="planet"></div>
+          <div class="star"></div>
           <div class="orbit"></div>
-          <div class="sat" id="sat1"></div>
+          <div class="planet" id="planet1"></div>
+          <div class="planet" id="planet2"></div>
         </div>
       </div>
     
