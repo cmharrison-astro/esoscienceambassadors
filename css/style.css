@@ -12,7 +12,7 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
   position: absolute;
   border-radius: 100%;
 }
-.planet {
+.star {
   top: 50px; right: 50px;
   width: 100px;
   height: 100px;  
@@ -24,7 +24,7 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
   width: 200px; height: 200px;
   border: solid 1px #ccc;    
 }
-.sat {
+.planet {
   width: 30px; height: 30px;
   background-color: #ccc;
   /* box-shadow: inset -10px -10px 10px rgba(0,0,0,0.25); */

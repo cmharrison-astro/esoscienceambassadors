@@ -2,7 +2,7 @@
 console.log('script is here!');
 
 // init part, set your own values
-var sat = {
+var planet = {
     elt: null,
     a: 0,         // in radian
     r: 100,       // radius
@@ -14,7 +14,7 @@ var sat = {
     center: { x: (100 - 15), y: (100 - 15) }
 };
 
-sat.move = function() {
+planet.move = function() {
     // each modification
     this.a += this.da
     this.x = this.center.x + (this.r * Math.sin(this.a));
@@ -24,8 +24,8 @@ sat.move = function() {
     this.elt.style.left = this.x + "px";
 };
 
-sat.elt = document.getElementById('sat1');
+planet.elt = document.getElementById('planet1');
 
 var loopTimer = setInterval(function(){
-    sat.move();
+    planet.move();
 }, 50);

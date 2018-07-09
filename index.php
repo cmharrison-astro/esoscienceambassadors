@@ -194,9 +194,9 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
       <!-- Animated Exoplanet system -->
       <div id="RAnimation" class="w3-container menu2 w3-padding-48 w3-card">
         <div class="space">  
-          <div class="planet"></div>
+          <div class="star"></div>
           <div class="orbit"></div>
-          <div class="sat" id="sat1"></div>
+          <div class="planet" id="planet1"></div>
         </div>
       </div>
     
