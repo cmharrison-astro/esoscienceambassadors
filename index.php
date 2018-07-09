@@ -251,6 +251,7 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
           <div class="planet" id="planet1"></div>
           <div class="planet" id="planet2"></div>
         </div>
+        
       </div>
     
       <div id="RParticipants" class="w3-container menu2 w3-padding-48 w3-card">

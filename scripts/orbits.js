@@ -35,6 +35,7 @@ class Planet {
 const planet1 = new Planet('planet1', document.getElementById('planet1'), 0, 57, 0.02);
 const planet2 = new Planet('planet2', document.getElementById('planet2'), 0, 150, 0.08);
 
+
 // this is just for demo purpose - it should output in your browser console
 planet1.greeting();
 planet2.greeting();

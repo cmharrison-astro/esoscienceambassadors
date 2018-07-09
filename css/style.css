@@ -13,9 +13,15 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
   border-radius: 100%;
 }
 .star {
+<<<<<<< HEAD
   top: 75px; right: 75px;
   width: 50px;
   height: 50px;  
+=======
+  top: 50px; right: 50px;
+  width: 100px;
+  height: 100px;  
+>>>>>>> 488e924de7e0cd150977ed94e3c548ef4bf43fb7
   background-color: #ccc;
   /* box-shadow: inset -30px -30px 30px rgba(0,0,0,0.25); */
 }
@@ -25,7 +31,11 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
   border: solid 1px #ccc;    
 }
 .planet {
+<<<<<<< HEAD
   width: 10px; height: 10px;
+=======
+  width: 30px; height: 30px;
+>>>>>>> 488e924de7e0cd150977ed94e3c548ef4bf43fb7
   background-color: #ccc;
   /* box-shadow: inset -10px -10px 10px rgba(0,0,0,0.25); */
 }
