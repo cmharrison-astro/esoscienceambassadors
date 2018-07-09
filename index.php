@@ -197,6 +197,8 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
           <div class="star"></div>
           <div class="orbit"></div>
           <div class="planet" id="planet1"></div>
+          <div class="planet" id="planet2"></div>
+
         </div>
       </div>
     
