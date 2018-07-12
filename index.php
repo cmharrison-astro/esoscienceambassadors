@@ -173,7 +173,7 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
           ?>
         </div>
       </div>
-      <div style="w3-col s5">Selected Star: <?=$exoName_D?></div>
+      <div style="w3-col s5">Selected Star: <span class="w3-tag w3-wide" style="background-color:#000000"><?=$exoName_D?></span></div>
     </div>
 
 <!-- -->
@@ -197,7 +197,7 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
       <?php
         //SQL query
         $sqlSystemProps = "SELECT 
-        star_name, star_name_2, 
+        star_name, star_name_2, star_distance, star_teff,
         name_a, name_b, name_c, name_d, name_e, name_f, 
         mass_a, mass_b, mass_c, mass_d, mass_e, mass_f, 
         semi_major_axis_a, semi_major_axis_b, semi_major_axis_c, semi_major_axis_d, semi_major_axis_e, semi_major_axis_f,
@@ -207,6 +207,7 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
 
         //If successful query
         if ($resultSystemProps->num_rows == 1) {
+          echo '<div class="w3-row w3-padding-small">';
           $row = $resultSystemProps->fetch_assoc();
           //Read raw data for planets and put into arrays
           $planetNames = array($row["name_a"],$row["name_b"],$row["name_c"],$row["name_d"],$row["name_e"],$row["name_f"],$row["name_g"]);
@@ -232,25 +233,41 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
           $planetDAvalues = [0,0,0,0,0,0,0];
           $planetSizeValues = [0,0,0,0,0,0,0];
 
-          echo 'Number of known planets:'.$nPlanet.'<br />';
+
+          echo '<div class="w3-half">
+          <div class="space"> 
+          <div class="star"></div>';
+          //<div class="orbit"></div>
+
           for ($j = 0; $j<$nPlanet; $j++){
             //calculate css/java parameters based on real data
             $planetAvalues[$j] = 150*$planetDistances[$j]/$maxPlanetDist;
-            $planetSizeValues[$j] = 50*$planetMass[$j]/$maxPlanetMass;
+            $planetSizeValues[$j] = 20*$planetMass[$j]/$maxPlanetMass;
             $planetDAvalues[$j] = 0.02*$maxPlanetPeriod/$planetPeriods[$j];
-            echo 'Name='.$planetNames[$j].'; a='.$planetAvalues[$j].' dA='.$planetDAvalues[$j].' dM='.$planetMass[$j].' size='. $planetSizeValues[$j].'<br />';
+
+            //create div for each planet
+            echo '<div class="planet" id="planet'.$j.'" style="width:'.$planetSizeValues[$j].'px;height:'.$planetSizeValues[$j].'px"></div>';
+          
           }
+          echo '</div>';
+          echo '</div>';
+
+          echo '<div class="w3-half w3-padding-small">';
+          echo '<b>Star Temperature:</b> '.$row['star_teff'].'<br />';
+          echo '<b>Distance to star:</b> '.$row['star_distance'].'<br />';
+          echo '<b>Number of known planets:</b> '.$nPlanet.'<br />';
+          for ($j = 0; $j<$nPlanet; $j++){
+            echo $planetNames[$j].'<br />'; 
+            //a='.$planetAvalues[$j].' dA='.$planetDAvalues[$j].'size='. $planetSizeValues[$j].'<br />';     
+          }
+          echo '</div>';
+
          } else{
            echo "Problem fetching exoplanet data";
          }
-      ?>
 
-        <div class="space">  
-          <div class="star"></div>
-          <div class="orbit"></div>
-          <div class="planet" id="planet1"></div>
-          <div class="planet" id="planet2"></div>
-        </div>
+         echo '</div>'; 
+      ?>
         
       </div>
     
@@ -305,11 +322,36 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
       </a>
     </div>
 
-    <div id="REveryone" class="w3-container menu w3-padding-48 w3-card">
-      <h5>Some Text</h5>
-      <p class="w3-text-grey">Some Resources For Everyone (will contain links to images, videos etc.)</p><br>
+    <div id="REveryone" class="w3-container menu w3-padding-16 w3-card">
+      <h5>Extremely Large Telescope</h5>
+      <div class="w3-row">
+        <div class="w3-display-container w3-third w3-padding-small">
+          <a href="http://eso.org/public/unitedkingdom/images/archive/category/elt/" target="_blank" data-toggle="tooltip" title="Image Archive">
+          <img src="images/general/elt_images.jpg" class="w3-round-xlarge" alt="ELT images" style="width:100%">
+          <div class="w3-display-bottomleft w3-tiny w3-text-white" style="padding-left:20px;padding-bottom:5px">ESO/L. Calçada</div>
+          </a>
+        </div>
+        <div class="w3-display-container w3-third w3-padding-small">
+          <a href="http://eso.org/public/unitedkingdom/videos/archive/category/elt/" target="_blank" data-toggle="tooltip" title="Video Archive">
+          <img src="images/general/elt_movies.jpg" class="w3-round-xlarge" alt="ELT movies" style="width:100%"></a>
+          <div class="w3-display-bottomleft w3-tiny w3-text-white" style="padding-left:20px;padding-bottom:5px">ESO/L. Calçada/ACe Consortium</div>
+        </div>
+        <div class="w3-display-container w3-third w3-padding-small">
+          <a href="https://www.eso.org/public/teles-instr/elt/" target="_blank" data-toggle="tooltip" title="Information">
+          <img src="images/general/elt_info.jpg" class="w3-round-xlarge" alt="ELT information" style="width:100%"></a>
+          <div class="w3-display-bottomleft w3-tiny w3-text-black" style="padding-left:20px;padding-bottom:5px">ESO</div>
+        </div>
+      </div>
+
+      <h5>Atacama Pathfinder Experiment (APEX)</h5>
     </div>
     
+    <script>
+    $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+    });
+    </script>
+
     <div id="REducators" class="w3-container menu w3-padding-48 w3-card">
       <h5>Some Other Text</h5>
       <p class="w3-text-grey">Some Resources for Educators (will contain links to educational resources - documents and such like.</p><br>
@@ -319,8 +361,7 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
   </div>
 
     <div class="w3-panel w3-leftbar w3-light-grey">
-      <p><i>"Something profound"</i></p>
-      <p>Some text</p>
+    <p></p>
     </div>
     
   </div>
@@ -331,7 +372,12 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
 
 <!-- Footer -->
 <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
-  <p>Footer</p>
+<button onclick="creditPopUp()">Credits</button>
+<script>
+function creditPopUp() {
+    alert("Project Co-ordinators:\n Chris Harrison; Fabrizio Arrigoni Battaia; Lucy Moorcraft\nWebsite:\n Chris Harrison; Jasmin Patel\nAmbassadors:\n Hugo Messias\n Miguel Querejeta\nContributions from:\n Tania Johnston\n Wolfgang Vieser\n Saskia\n Elizabeth\n Alex");
+}
+</script>
 </footer>
 
 
