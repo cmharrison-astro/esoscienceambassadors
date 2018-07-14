@@ -35,7 +35,6 @@ class Planet {
 const planet1 = new Planet('planet1', document.getElementById('planet1'), 0, 57, 0.02);
 const planet2 = new Planet('planet2', document.getElementById('planet2'), 0, 150, 0.08);
 
-
 // this is just for demo purpose - it should output in your browser console
 planet1.greeting();
 planet2.greeting();
@@ -43,8 +42,23 @@ planet2.greeting();
 // this function can probably get moved into the class
 const loopTimer = setInterval(function(){
     planet1.move();
-}, 50); // the function is called every 50 milliseconds
+}, 1000); // the function is called every 50 milliseconds
 
 const loopTimer2 = setInterval(function(){
     planet2.move();
-}, 50);
+}, 1000);
+
+const foo = document.getElementById("dom-target");
+const bar = foo.textContent;
+const baz = bar.trim();
+
+console.log('#######', foo);
+
+
+console.log(`*${baz}*`);
+
+
+
+
+
+

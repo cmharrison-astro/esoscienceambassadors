@@ -21,13 +21,19 @@ $username = "lim_user";
 $password = "T42z3jubwX0Uy4lH";
 $dbname = "eso_science_ambassadors";
 
+
+function debugToConsole($msg) { 
+  echo "<script>console.log(".json_encode($msg).")</script>";
+}
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
-//echo "Connected successfully";
+} else {
+  debugToConsole("Connected successfully");
+}
 ?>
 
 <!--get language here-->
@@ -50,7 +56,13 @@ if ($conn->connect_error) {
   if (empty($exoName_D)) {
     $exoName_D='61 vir';
   }
+
+  debugToConsole($exoName);
+  debugToConsole($exoName_D);
+
 ?>
+
+
 
 <!-- Set up languages -->
 <?php
@@ -73,6 +85,10 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
  }
 
 ?>
+
+<div id="dom-target" style="display: none;">
+  <?=trim($exoName)?>
+</div>
 
 <!-- Links Menu (sit on top) -->
 <div class="w3-top">
@@ -176,6 +192,7 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
       <div style="w3-col s5">Selected Star: <span class="w3-tag w3-wide" style="background-color:#000000"><?=$exoName_D?></span></div>
     </div>
 
+
 <!-- -->
     <div class="w3-content w3-display-container">
 
@@ -205,6 +222,8 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
         FROM exoplanets WHERE star_name_2='$exoName'";
         $resultSystemProps = $conn->query($sqlSystemProps);
 
+        debugToConsole($resultSystemProps);
+
         //If successful query
         if ($resultSystemProps->num_rows == 1) {
           echo '<div class="w3-row w3-padding-small">';
@@ -214,6 +233,10 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
           $planetDistances = array($row["semi_major_axis_a"],$row["semi_major_axis_b"],$row["semi_major_axis_c"],$row["semi_major_axis_d"],$row["semi_major_axis_e"],$row["semi_major_axis_f"],$row["semi_major_axis_g"]);
           $planetPeriods = array($row["orbital_period_a"],$row["orbital_period_b"],$row["orbital_period_c"],$row["orbital_period_d"],$row["orbital_period_e"],$row["orbital_period_f"],$row["orbital_period_g"]);
           $planetMass = array($row["mass_a"],$row["mass_b"],$row["mass_c"],$row["mass_d"],$row["mass_e"],$row["mass_f"],$row["mass_g"]);
+
+
+          debugToConsole($planetNames);
+
 
           //Count planets
           $nPlanet = 0;
