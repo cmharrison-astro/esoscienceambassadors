@@ -86,7 +86,7 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
 
 ?>
 
-<div id="dom-target" style="display: none;">
+<div id="exo-name" style="display: none;">
   <?=trim($exoName)?>
 </div>
 
