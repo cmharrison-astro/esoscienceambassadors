@@ -404,6 +404,11 @@ function creditPopUp() {
 </footer>
 
 
+
+<?php
+  setcookie("MyCookie", $foo);
+?>
+
 <!-- Scripts, place somewhere else? -->
   <script src="dist/orbits.js"></script>
   <script src="dist/slider.js"></script>
