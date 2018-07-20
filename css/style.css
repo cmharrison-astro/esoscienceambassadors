@@ -4,8 +4,8 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 /* Exoplanet orbits */
 .space {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   margin: 3em;
 }
 .space > div {
@@ -13,10 +13,10 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
   border-radius: 100%;
 }
 .star {
-  top: 75px; right: 75px;
-  width: 50px;
-  height: 50px;  
-  background-color: rgb(216, 129, 29);
+  top: 100px; right: 125px;
+  width: 25px;
+  height: 25px;  
+  background-color: rgb(216, 190, 29);
   /* box-shadow: inset -30px -30px 30px rgba(0,0,0,0.25); */
 }
 .orbit {
