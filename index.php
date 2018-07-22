@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html>
 
-<title>ESO Science Ambassadors</title>
-<meta charset="UTF-8">
+<head>
+  <title>ESO Science Ambassadors</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ESO, European Organisation for Astronomical Research in the Southern Hemisphere" />
+  <meta name="keywords" content="ESO, Astronomy, Astrophysics, Astronomie, Suedsternwarte, telescopes, planets, stars, galaxies, universe, NTT, VLT, VLTI, ALMA, ELT, La Silla, Paranal, Garching, Chile, science, ambassadors, exoplanets" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="ESO, European Organisation for Astronomical Research in the Southern Hemisphere" />
-<meta name="keywords" content="ESO, Astronomy, Astrophysics, Astronomie, Suedsternwarte, telescopes, planets,
-stars, galaxies, universe, NTT, VLT, VLTI, ALMA, ELT, La Silla, Paranal, Garching, Chile, science, ambassadors, exoplanets" />
-
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+</head>
 
 <body>
 
+<?php
+  // development helper function
+  function debugToConsole($msg) { 
+    echo "<script>console.log(".json_encode($msg).")</script>";
+  }
+?>
+
 <!-- database -->
 <?php
-$servername = "localhost";
-$username = "lim_user";
-$password = "T42z3jubwX0Uy4lH";
-$dbname = "eso_science_ambassadors";
+  $servername = "localhost";
+  $username = "lim_user";
+  $password = "T42z3jubwX0Uy4lH";
+  $dbname = "eso_science_ambassadors";
 
-
-function debugToConsole($msg) { 
-  echo "<script>console.log(".json_encode($msg).")</script>";
-}
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} else {
-  debugToConsole("Connected successfully");
-}
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  } else {
+    debugToConsole("Connected successfully");
+  }
 ?>
 
 <!--get language here-->
@@ -43,7 +45,6 @@ if ($conn->connect_error) {
   if (empty($lang)) {
     $lang='en';
   }
-
 ?>
 
 <!--get exoplanet here-->
@@ -56,34 +57,24 @@ if ($conn->connect_error) {
   if (empty($exoName_D)) {
     $exoName_D='61 vir';
   }
-
-  debugToConsole($exoName);
-  debugToConsole($exoName_D);
-
 ?>
-
 
 
 <!-- Set up languages -->
 <?php
-$home_txt='Home';
-$about_txt='About Us';
-$resources_txt='Resources';
-$exoplanets_txt='Exoplanets';
-$foreveryone_txt='For Everyone';
-$foreducators_txt='For Educators';
-$explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
+  $home_txt='Home';
+  $about_txt='About Us';
+  $resources_txt='Resources';
+  $exoplanets_txt='Exoplanets';
+  $foreveryone_txt='For Everyone';
+  $foreducators_txt='For Educators';
+  $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
 
- if ($lang == 'en'){
-   $about_txt='About Us';
-   $resources_txt='Resources';
- }
- if ($lang == 'fr'){
-   $about_txt='Sur';
-   $resources_txt='Ressources';
-   $explorePlanets_txt='EXPLOREZ VOS<br>EXOPLANETS';
- }
-
+  if ($lang == 'fr'){
+    $about_txt='Sur';
+    $resources_txt='Ressources';
+    $explorePlanets_txt='EXPLOREZ VOS<br>EXOPLANETS';
+  }
 ?>
 
 
@@ -132,24 +123,24 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
 
     <!-- Include About Us Text -->
     <div class="w3-container w3-padding-small w3-card w3-medium">
-    <?php include 'pages/about/about_'.$lang.'.html';?>
+      <?php include 'pages/about/about_'.$lang.'.html';?>
     </div>
   
 <!-- Slider for Action Photos (look in directory get image and metadata) -->
     <div class="w3-content w3-display-container">
       <?php
-      $handle = opendir(dirname(realpath(__FILE__)).'/images/ambassadors/');
-      while($ambimages = readdir($handle)){
-  
-        if($ambimages !== '.' && $ambimages !== '..'){
-          $exif = exif_read_data('images/ambassadors/'.$ambimages.'', 0, true);
-          foreach ($exif['COMPUTED'] as $header => $value) {
-            if($header==UserComment){$comment = $value;}
+        $handle = opendir(dirname(realpath(__FILE__)).'/images/ambassadors/');
+        while($ambimages = readdir($handle)){
+    
+          if($ambimages !== '.' && $ambimages !== '..'){
+            $exif = exif_read_data('images/ambassadors/'.$ambimages.'', 0, true);
+            foreach ($exif['COMPUTED'] as $header => $value) {
+              if($header==UserComment){$comment = $value;}
+            }
+            echo '<div class="w3-display-container mySlides"><img src="images/ambassadors/'.$ambimages.'" style="width:100%">
+            <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">'.$comment.'</div></div>';  
           }
-          echo '<div class="w3-display-container mySlides"><img src="images/ambassadors/'.$ambimages.'" style="width:100%">
-          <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">'.$comment.'</div></div>';  
         }
-      }
       ?>
       <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
       <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
@@ -168,22 +159,22 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
     <!-- Will then set the properties of animated exoplanet system -->
     <div class="w3-row">
       <div class="w3-dropdown-click w3-col s5">
-        <button onclick="myFunction()" class="w3-button w3-red">Select Star! <i class="arrow down"></i></button>
+        <button onclick="chooseStarMenu()" class="w3-button w3-red">Select Star! <i class="arrow down"></i></button>
         <div id="Exoplanets" class="w3-dropdown-content w3-bar-block w3-border">
           <?php
-          $sql = "SELECT star_name, star_name_2 FROM exoplanets";
-          $result = $conn->query($sql);
+            $sql = "SELECT star_name, star_name_2 FROM exoplanets";
+            $result = $conn->query($sql);
 
-          if ($result->num_rows > 0) {
-          // output data of each row
-            while($row = $result->fetch_assoc()) {
-              if($row["star_name_2"] != ""){
-              echo '<a href="./?exoName='.$row["star_name_2"].'&exoName_D='.$row["star_name"].'#exoplanets" class="w3-bar-item w3-button">'.$row["star_name"].'</a>';
+            if ($result->num_rows > 0) {
+            // output data of each row
+              while($row = $result->fetch_assoc()) {
+                if($row["star_name_2"] != ""){
+                echo '<a href="./?exoName='.$row["star_name_2"].'&exoName_D='.$row["star_name"].'#exoplanets" class="w3-bar-item w3-button">'.$row["star_name"].'</a>';
+                }
               }
+            } else {
+            echo "0 results";
             }
-          } else {
-          echo "0 results";
-          }
           ?>
         </div>
       </div>
@@ -220,8 +211,6 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
         FROM exoplanets WHERE star_name_2='$exoName'";
         $resultSystemProps = $conn->query($sqlSystemProps);
 
-        debugToConsole($resultSystemProps);
-
         //If successful query
         if ($resultSystemProps->num_rows == 1) {
           echo '<div class="w3-row w3-padding-small">';
@@ -231,10 +220,6 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
           $planetDistances = array($row["semi_major_axis_a"],$row["semi_major_axis_b"],$row["semi_major_axis_c"],$row["semi_major_axis_d"],$row["semi_major_axis_e"],$row["semi_major_axis_f"],$row["semi_major_axis_g"]);
           $planetPeriods = array($row["orbital_period_a"],$row["orbital_period_b"],$row["orbital_period_c"],$row["orbital_period_d"],$row["orbital_period_e"],$row["orbital_period_f"],$row["orbital_period_g"]);
           $planetMass = array($row["mass_a"],$row["mass_b"],$row["mass_c"],$row["mass_d"],$row["mass_e"],$row["mass_f"],$row["mass_g"]);
-
-
-          debugToConsole($planetNames);
-
 
           //Count planets
           $nPlanet = 0;
@@ -292,6 +277,12 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
         
       </div>
     
+      <script>
+        // grab the data in js 
+        // TODO: cleanse data
+        var row = <?=json_encode($row)?>;
+      </script>
+
       <div id="RParticipants" class="w3-container menu2 w3-padding-48 w3-card">
         <h5>Your Pics!</h5>
         <p class="w3-text-grey">Slider for participants artist impressions</p><br>
@@ -299,26 +290,25 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
 
       <div id="RProfessional" class="w3-container menu2 w3-padding-48 w3-card">
         <?php
-        $exohandle = opendir(dirname(realpath(__FILE__)).'/images/exoplanets/'.$exoName.'/professional/');
-        while($exoimages = readdir($exohandle)){
-          if($exoimages !== '.' && $exoimages !== '..'){
-            $exif = exif_read_data('images/exoplanets/'.$exoName.'/professional/'.$exoimages.'', 0, true);
-            foreach ($exif['IFD0'] as $header => $value) {
-              if($header==Title){$comment = $value;}
-              if($header==Author){$copyright = $value;}
+          $exohandle = opendir(dirname(realpath(__FILE__)).'/images/exoplanets/'.$exoName.'/professional/');
+          while($exoimages = readdir($exohandle)){
+            if($exoimages !== '.' && $exoimages !== '..'){
+              $exif = exif_read_data('images/exoplanets/'.$exoName.'/professional/'.$exoimages.'', 0, true);
+              foreach ($exif['IFD0'] as $header => $value) {
+                if($header==Title){$comment = $value;}
+                if($header==Author){$copyright = $value;}
+              }
+              echo '<div class="w3-display-container w3-center mySlides2"><img src="images/exoplanets/'.$exoName.'/professional/'.$exoimages.'" style="width:100%">
+              <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">'.$comment.'</div>
+              <div class="w3-display-bottomright w3-small w3-container w3-padding-16 w3-black">'.$copyright.'</div>
+              </div>';  
             }
-            echo '<div class="w3-display-container w3-center mySlides2"><img src="images/exoplanets/'.$exoName.'/professional/'.$exoimages.'" style="width:100%">
-            <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">'.$comment.'</div>
-            <div class="w3-display-bottomright w3-small w3-container w3-padding-16 w3-black">'.$copyright.'</div>
-            </div>';  
-          }
-        }   
+          }   
         ?>
         <button class="w3-button w3-display-left w3-black" onclick="plusDivs2(-1)">&#10094;</button>
         <button class="w3-button w3-display-right w3-black" onclick="plusDivs2(1)">&#10095;</button>
       </div> 
     </div>
-
   </div>
  </div>
 
@@ -334,7 +324,7 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
 
     <h5 class="w3-center w3-padding-24"><span class="w3-tag w3-wide"><?=$resources_txt?></span></h5>
 
-   <div class="w3-row w3-center w3-card w3-padding">
+    <div class="w3-row w3-center w3-card w3-padding">
       <a href="javascript:void(0)" onclick="openMenu(event, 'REveryone');" id="myLink">
         <div class="w3-col s6 tablink"><?=$foreveryone_txt?></div>
       </a>
@@ -368,9 +358,9 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
     </div>
     
     <script>
-    $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
-    });
+      $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip(); 
+      });
     </script>
 
     <div id="REducators" class="w3-container menu w3-padding-48 w3-card">
@@ -379,11 +369,11 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
     </div>  
 
   </div>
-  </div>
+</div>
 
-    <div class="w3-panel w3-leftbar w3-light-grey">
+  <div class="w3-panel w3-leftbar w3-light-grey">
     <p></p>
-    </div>
+  </div>
     
   </div>
 </div>
@@ -393,26 +383,20 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
 
 <!-- Footer -->
 <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
-<button onclick="creditPopUp()">Credits</button>
-<script>
-function creditPopUp() {
-    alert("Project Co-ordinators:\n Chris Harrison; Fabrizio Arrigoni Battaia; Lucy Moorcraft\nWebsite:\n Chris Harrison; Jasmin Patel\nAmbassadors:\n Hugo Messias\n Miguel Querejeta\nContributions from:\n Tania Johnston\n Wolfgang Vieser\n Saskia\n Elizabeth\n Alex");
-}
-</script>
+  <button onclick="creditPopUp()">Credits</button>
+  <script>
+    function creditPopUp() {
+        alert("Project Co-ordinators:\n Chris Harrison; Fabrizio Arrigoni Battaia; Lucy Moorcraft\nWebsite:\n Chris Harrison; Jasmin Patel\nAmbassadors:\n Hugo Messias\n Miguel Querejeta\nContributions from:\n Tania Johnston\n Wolfgang Vieser\n Saskia\n Elizabeth\n Alex");
+    }
+  </script>
 </footer>
 
-<script>
-    var data = <?php echo json_encode("42", JSON_HEX_TAG); ?>;
-</script>
-
-
-<!-- Scripts, place somewhere else? -->
-  <script src="dist/orbits.js"></script>
-  <script src="dist/slider.js"></script>
-  <script src="dist/slider2.js"></script>
-  <script src="dist/tabbed_menu.js"></script>
-  <script src="dist/tabbed_menu2.js"></script>
-  <script src="dist/dropdown_menu.js"></script>
+<script src="dist/orbits.js"></script>
+<script src="dist/slider.js"></script>
+<script src="dist/slider2.js"></script>
+<script src="dist/tabbed_menu.js"></script>
+<script src="dist/tabbed_menu2.js"></script>
+<script src="dist/dropdown_menu.js"></script>
 
 </body>
 </html>
