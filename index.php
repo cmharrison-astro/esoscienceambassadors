@@ -86,9 +86,7 @@ $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
 
 ?>
 
-<div id="exo-name" style="display: none;">
-  <?=trim($exoName)?>
-</div>
+
 
 <!-- Links Menu (sit on top) -->
 <div class="w3-top">
@@ -403,11 +401,10 @@ function creditPopUp() {
 </script>
 </footer>
 
+<script>
+    var data = <?php echo json_encode("42", JSON_HEX_TAG); ?>;
+</script>
 
-
-<?php
-  setcookie("MyCookie", $foo);
-?>
 
 <!-- Scripts, place somewhere else? -->
   <script src="dist/orbits.js"></script>

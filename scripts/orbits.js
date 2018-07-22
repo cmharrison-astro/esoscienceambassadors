@@ -56,14 +56,4 @@ const trimExoName = getExoNameFromElement.trim();
 console.log(`${trimExoName}`);
 
 
-
-function reqListener () {
-  console.log(this.responseText);
-}
-
-var oReq = new XMLHttpRequest();
-oReq.onload = function() {
-  alert(this.responseText);
-};
-oReq.open("get", "./get-data.php", true);
-oReq.send();
+document.onreadystatechange = () => { if (document.readyState === 'complete') { // document ready alert(js_variable) } };
