@@ -59,10 +59,24 @@ const planet2 = new Planet(
   parseFloat(row.orbital_period_c)
 );
 
+const planet3 = new Planet(
+  row.name_c,
+  document.getElementById('planet2'),
+  0,
+  parseFloat(row.semi_major_axis_c),
+  parseFloat(row.orbital_period_c)
+);
+
+console.log('#####', nPlanet);
+
+
+
 planet0.greeting();
 planet1.greeting();
 planet2.greeting();
+planet3.greeting();
 
 planet0.moveTimer(planet0);
 planet1.moveTimer(planet1);
 planet2.moveTimer(planet2);
+planet3.moveTimer(planet3);
