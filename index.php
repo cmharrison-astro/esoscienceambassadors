@@ -158,7 +158,7 @@
     <!-- Auto generated drop down menu from SQL table -->
     <!-- Will then set the properties of animated exoplanet system -->
     <div class="w3-row">
-      <div class="w3-dropdown-click w3-col s5">
+      <div class="w3-col s5">
         <button onclick="chooseStarMenu()" class="w3-button w3-red">Select Star! <i class="arrow down"></i></button>
         <div id="Exoplanets" class="w3-dropdown-content w3-bar-block w3-border">
           <?php
@@ -203,11 +203,11 @@
       <?php
         //SQL query
         $sqlSystemProps = "SELECT 
-        star_name, star_name_2, star_distance, star_teff,
-        name_a, name_b, name_c, name_d, name_e, name_f, 
-        mass_a, mass_b, mass_c, mass_d, mass_e, mass_f, 
-        semi_major_axis_a, semi_major_axis_b, semi_major_axis_c, semi_major_axis_d, semi_major_axis_e, semi_major_axis_f,
-        orbital_period_a, orbital_period_b, orbital_period_c, orbital_period_d, orbital_period_e, orbital_period_f
+        star_name, star_name_2, star_distance, star_teff, interesting_fact,
+        name_a, name_b, name_c, name_d, name_e, name_f, name_g,
+        mass_a, mass_b, mass_c, mass_d, mass_e, mass_f, mass_g,
+        semi_major_axis_a, semi_major_axis_b, semi_major_axis_c, semi_major_axis_d, semi_major_axis_e, semi_major_axis_f, semi_major_axis_g,
+        orbital_period_a, orbital_period_b, orbital_period_c, orbital_period_d, orbital_period_e, orbital_period_f, orbital_period_g
         FROM exoplanets WHERE star_name_2='$exoName'";
         $resultSystemProps = $conn->query($sqlSystemProps);
 
@@ -235,21 +235,21 @@
           $maxPlanetDist = max($planetDistances);
           $maxPlanetPeriod = max($planetPeriods);
           $maxPlanetMass = max($planetMass);
-          $planetAvalues = [0,0,0,0,0,0,0];
+          $planetRvalues = [0,0,0,0,0,0,0];
           $planetDAvalues = [0,0,0,0,0,0,0];
           $planetSizeValues = [0,0,0,0,0,0,0];
 
 
-          echo '<div class="w3-half">
+          echo '<div class="w3-twothird w3-padding-large">
           <div class="space"> 
           <div class="star"></div>';
           //<div class="orbit"></div>
 
           for ($j = 0; $j<$nPlanet; $j++){
             //calculate css/java parameters based on real data
-            $planetAvalues[$j] = 150*$planetDistances[$j]/$maxPlanetDist;
-            $planetSizeValues[$j] = 20*$planetMass[$j]/$maxPlanetMass;
-            $planetDAvalues[$j] = 0.02*$maxPlanetPeriod/$planetPeriods[$j];
+            $planetRvalues[$j] = 200*$planetDistances[$j]/$maxPlanetDist;
+            $planetSizeValues[$j] = 10*$planetMass[$j]/$maxPlanetMass;
+            $planetDAvalues[$j] = 0.005*$maxPlanetPeriod/$planetPeriods[$j];
 
             //create div for each planet
             echo '<div class="planet" id="planet'.$j.'" style="width:'.$planetSizeValues[$j].'px;height:'.$planetSizeValues[$j].'px"></div>';
@@ -257,14 +257,15 @@
           }
           echo '</div>';
           echo '</div>';
-
-          echo '<div class="w3-half w3-padding-small">';
-          echo '<b>Star Temperature:</b> '.$row['star_teff'].'<br />';
-          echo '<b>Distance to star:</b> '.$row['star_distance'].'<br />';
-          echo '<b>Number of known planets:</b> '.$nPlanet.'<br />';
+          echo '<div class="w3-third w3-padding-small">';
+          echo '<b>Star Temp.:</b> '.number_format($row['star_teff']-273., 0, '.', ',').' C<br />';
+          echo '<b>Distance:</b> '.number_format($row['star_distance']*3.26156, 1, '.', ',').' light yrs<br />';
+          echo '<b>Fact</b> '.$row['interesting_fact'].'<br />';
+          echo '<b>Confirmed planets:</b> '.$nPlanet.'<br />';
           for ($j = 0; $j<$nPlanet; $j++){
             echo $planetNames[$j].'<br />'; 
-            //a='.$planetAvalues[$j].' dA='.$planetDAvalues[$j].'size='. $planetSizeValues[$j].'<br />';     
+            //a='.$planetAvalues[$j].' dA='.$planetDAvalues[$j].'size='. $planetSizeValues[$j].'<br />';  
+            //echo "const planet".($j+1)." = new Planet('planet".($j+1)."', document.getElementById('planet".($j+1)."'), 0, ".$planetRvalues[$j].", ".$planetDAvalues[$j].");";   
           }
           echo '</div>';
 
@@ -273,14 +274,27 @@
          }
 
          echo '</div>'; 
-      ?>
-        
+
+
+// instantiate planet objects and loops
+
+// for ($j = 0; $j<$nPlanet; $j++){
+// echo "const planet".$j." = new Planet('planet".$j."', document.getElementById('planet".$j."'), 0, ".$planetRvalues[$j].", ".$planetDAvalues[$j].");";
+// echo "planet".$j.".greeting();";
+// // this function can probably get moved into the class
+// echo "const loopTimer".$j." = setInterval(function(){";
+// echo "planet".$j.".move();";
+// echo "}, 50);"; // the function is called every 50 milliseconds
+// }
+?>
+
       </div>
     
       <script>
         // grab the data in js 
         // TODO: cleanse data
         var row = <?=json_encode($row)?>;
+        var nPlanet = <?=json_encode($nPlanet)?>;
       </script>
 
       <div id="RParticipants" class="w3-container menu2 w3-padding-48 w3-card">
@@ -353,8 +367,45 @@
           <div class="w3-display-bottomleft w3-tiny w3-text-black" style="padding-left:20px;padding-bottom:5px">ESO</div>
         </div>
       </div>
-
+      <h5>Exoplanets</h5>
+      <div class="w3-row">
+        <div class="w3-display-container w3-third w3-padding-small">
+          <a href="http://eso.org/public/unitedkingdom/images/archive/category/exoplanets/" target="_blank" data-toggle="tooltip" title="Image Archive">
+          <img src="images/general/exoplanet_images.jpg" class="w3-round-xlarge" alt="Exoplanets images" style="width:100%">
+          <div class="w3-display-bottomleft w3-tiny w3-text-white" style="padding-left:20px;padding-bottom:5px">ESO/N. Bartmann/spaceengine.org</div>
+          </a>
+        </div>
+        <div class="w3-display-container w3-third w3-padding-small">
+          <a href="http://eso.org/public/unitedkingdom/videos/archive/category/exoplanets/" target="_blank" data-toggle="tooltip" title="Video Archive">
+          <img src="images/general/exoplanet_movies.jpg" class="w3-round-xlarge" alt="Exoplanet movies" style="width:100%"></a>
+          <div class="w3-display-bottomleft w3-tiny w3-text-white" style="padding-left:20px;padding-bottom:5px">ESO/L. Calçada</div>
+        </div>
+        <div class="w3-display-container w3-third w3-padding-small">
+          <a href="https://www.eso.org/public/science/exoplanets/" target="_blank" data-toggle="tooltip" title="Information">
+          <img src="images/general/exoplanet_info.jpg" class="w3-round-xlarge" alt="Exoplanet information" style="width:100%"></a>
+          <div class="w3-display-bottomleft w3-tiny w3-text-white" style="padding-left:20px;padding-bottom:5px">ESO</div>
+        </div>
+      </div>
       <h5>Atacama Pathfinder Experiment (APEX)</h5>
+      <div class="w3-row">
+        <div class="w3-display-container w3-third w3-padding-small">
+          <a href="http://eso.org/public/unitedkingdom/images/archive/category/apex/" target="_blank" data-toggle="tooltip" title="Image Archive">
+          <img src="images/general/apex_images.jpg" class="w3-round-xlarge" alt="APEX images" style="width:100%">
+          <div class="w3-display-bottomleft w3-tiny w3-text-white" style="padding-left:20px;padding-bottom:5px">F. Montenegro-Montes/ESO/APEX (MPIfR/ESO/OSO)</div>
+          </a>
+        </div>
+        <div class="w3-display-container w3-third w3-padding-small">
+          <a href="http://eso.org/public/unitedkingdom/videos/archive/category/apex/" target="_blank" data-toggle="tooltip" title="Video Archive">
+          <img src="images/general/apex_movies.jpg" class="w3-round-xlarge" alt="APEX movies" style="width:100%"></a>
+          <div class="w3-display-bottomleft w3-tiny w3-text-white" style="padding-left:20px;padding-bottom:5px">ESO/B. Tafreshi</div>
+        </div>
+        <div class="w3-display-container w3-third w3-padding-small">
+          <a href="https://www.eso.org/public/teles-instr/apex/" target="_blank" data-toggle="tooltip" title="Information">
+          <img src="images/general/apex_info.jpg" class="w3-round-xlarge" alt="APEX information" style="width:100%"></a>
+          <div class="w3-display-bottomleft w3-tiny w3-text-white" style="padding-left:20px;padding-bottom:5px">ESO/Onsala Space Observatory/I. Lapkin</div>
+        </div>
+      </div>
+
     </div>
     
     <script>
@@ -364,8 +415,7 @@
     </script>
 
     <div id="REducators" class="w3-container menu w3-padding-48 w3-card">
-      <h5>Some Other Text</h5>
-      <p class="w3-text-grey">Some Resources for Educators (will contain links to educational resources - documents and such like.</p><br>
+      <p class="w3-text-grey">Some Resources for Educators will be placed here as soon as possible.</p><br>
     </div>  
 
   </div>
@@ -386,17 +436,19 @@
   <button onclick="creditPopUp()">Credits</button>
   <script>
     function creditPopUp() {
-        alert("Project Co-ordinators:\n Chris Harrison; Fabrizio Arrigoni Battaia; Lucy Moorcraft\nWebsite:\n Chris Harrison; Jasmin Patel\nAmbassadors:\n Hugo Messias\n Miguel Querejeta\nContributions from:\n Tania Johnston\n Wolfgang Vieser\n Saskia\n Elizabeth\n Alex");
+      alert("Project Co-ordinators:\n Chris Harrison; Fabrizio Arrigoni Battaia; Lucy Moorcraft\nWebsite:\n Chris Harrison; Jasmin Patel\nAmbassadors:\n Hugo Messias\n Miguel Querejeta\nContributions from:\n Tania Johnston\n Wolfgang Vieser\n Stella-Maria Chasiotis-Klingner\n Nicole Shearer\n Saskia\n Elizabeth\n Alex");
     }
   </script>
 </footer>
 
-<script src="dist/orbits.js"></script>
-<script src="dist/slider.js"></script>
-<script src="dist/slider2.js"></script>
-<script src="dist/tabbed_menu.js"></script>
-<script src="dist/tabbed_menu2.js"></script>
-<script src="dist/dropdown_menu.js"></script>
+
+<!-- Scripts -->
+  <script src="dist/orbits.js"></script>
+  <script src="dist/slider.js"></script>
+  <script src="dist/slider2.js"></script>
+  <script src="dist/tabbed_menu.js"></script>
+  <script src="dist/tabbed_menu2.js"></script>
+  <script src="dist/dropdown_menu.js"></script>
 
 </body>
 </html>
