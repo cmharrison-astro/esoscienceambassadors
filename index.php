@@ -235,8 +235,8 @@
           $maxPlanetDist = max($planetDistances);
           $maxPlanetPeriod = max($planetPeriods);
           $maxPlanetMass = max($planetMass);
-          $planetRvalues = [0,0,0,0,0,0,0];
-          $planetDAvalues = [0,0,0,0,0,0,0];
+          $planetRValues = [0,0,0,0,0,0,0];
+          $planetDaValues = [0,0,0,0,0,0,0];
           $planetSizeValues = [0,0,0,0,0,0,0];
 
 
@@ -247,9 +247,9 @@
 
           for ($j = 0; $j<$nPlanet; $j++){
             //calculate css/java parameters based on real data
-            $planetRvalues[$j] = 200*$planetDistances[$j]/$maxPlanetDist;
+            $planetRValues[$j] = 200*$planetDistances[$j]/$maxPlanetDist;
             $planetSizeValues[$j] = 10*$planetMass[$j]/$maxPlanetMass;
-            $planetDAvalues[$j] = 0.005*$maxPlanetPeriod/$planetPeriods[$j];
+            $planetDaValues[$j] = 0.005*$maxPlanetPeriod/$planetPeriods[$j];
 
             //create div for each planet
             echo '<div class="planet" id="planet'.$j.'" style="width:'.$planetSizeValues[$j].'px;height:'.$planetSizeValues[$j].'px"></div>';
@@ -264,8 +264,8 @@
           echo '<b>Confirmed planets:</b> '.$nPlanet.'<br />';
           for ($j = 0; $j<$nPlanet; $j++){
             echo $planetNames[$j].'<br />'; 
-            //a='.$planetAvalues[$j].' dA='.$planetDAvalues[$j].'size='. $planetSizeValues[$j].'<br />';  
-            //echo "const planet".($j+1)." = new Planet('planet".($j+1)."', document.getElementById('planet".($j+1)."'), 0, ".$planetRvalues[$j].", ".$planetDAvalues[$j].");";   
+            //a='.$planetAvalues[$j].' dA='.$planetDaValues[$j].'size='. $planetSizeValues[$j].'<br />';  
+            //echo "const planet".($j+1)." = new Planet('planet".($j+1)."', document.getElementById('planet".($j+1)."'), 0, ".$planetRValues[$j].", ".$planetDaValues[$j].");";   
           }
           echo '</div>';
 
@@ -282,6 +282,9 @@
         // grab the data in js 
         // TODO: cleanse data
         var row = <?=json_encode($row)?>;
+        var planetRValues = <?=json_encode($planetRValues)?>;
+        var planetSizeValues = <?=json_encode($planetSizeValues)?>;
+        var planetDaValues = <?=json_encode($planetDaValues)?>;
       </script>
 
       <div id="RParticipants" class="w3-container menu2 w3-padding-48 w3-card">
@@ -439,4 +442,3 @@
 
 </body>
 </html>
-

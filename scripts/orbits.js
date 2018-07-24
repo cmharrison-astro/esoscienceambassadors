@@ -2,15 +2,14 @@ class Planet {
   constructor(name, htmlElement, orbitRadius, orbitalPeriod) {
     this.name = name;
     this.htmlElement = htmlElement;
-    this.orbitRadius = orbitRadius * 400; // this multiplication is a guess- without it the radius is tiny
-    this.orbitalPeriod = orbitalPeriod / 1000; // this division is a guess - without it the planets are SUPERFAST
+    this.orbitRadius = orbitRadius;
+    this.orbitalPeriod = orbitalPeriod;
     this.a = 0; // in radian
     this.x = 0;
     this.y = 0;
-    // Center is actualy center (100, 100) minus half the size of the orbiting object 15x15
-    this.center = { x: (100 - 15), y: (100 - 15) };
+    // Center is actually center minus half the size of the orbiting object
+    this.center = { x: (125 - 12.5), y: (125 - 12.5) };
 
-    // if you know what a, x and y represent, please name them something more meaninglyful
     // the x and y associated with center ARE NOT the same as the x and y associated with Planet
 
     this.move = () => {
@@ -38,57 +37,57 @@ const planets = [
     rockFromSun: "planet0", 
     name: row.name_a,
     mass: row.mass_a,
-    orbital_period: row.orbital_period_a,
-    semi_major_axis: row.semi_major_axis_a
+    semi_major_axis: planetRValues[0],
+    orbital_period: planetDaValues[0]
   },
   {
     rockFromSun: "planet1", 
     name: row.name_b,
     mass: row.mass_b,
-    orbital_period: row.orbital_period_b,
-    semi_major_axis: row.semi_major_axis_b
+    semi_major_axis: planetRValues[1],
+    orbital_period: planetDaValues[1]
   },
   {
     rockFromSun: "planet2", 
     name: row.name_c,
     mass: row.mass_c,
-    orbital_period: row.orbital_period_c,
-    semi_major_axis: row.semi_major_axis_c
+    semi_major_axis: planetRValues[2],
+    orbital_period: planetDaValues[2]
   },
   {
     rockFromSun: "planet3", 
     name: row.name_d,
     mass: row.mass_d,
-    orbital_period: row.orbital_period_d,
-    semi_major_axis: row.semi_major_axis_d
+    semi_major_axis: planetRValues[3],
+    orbital_period: planetDaValues[3]
   },
   {
     rockFromSun: "planet4", 
     name: row.name_e,
     mass: row.mass_e,
-    orbital_period: row.orbital_period_e,
-    semi_major_axis: row.semi_major_axis_e
+    semi_major_axis: planetRValues[4],
+    orbital_period: planetDaValues[4]
   },
   {
     rockFromSun: "planet5", 
     name: row.name_f,
     mass: row.mass_f,
-    orbital_period: row.orbital_period_f,
-    semi_major_axis: row.semi_major_axis_f
+    semi_major_axis: planetRValues[5],
+    orbital_period: planetDaValues[5]
   },
   {
     rockFromSun: "planet6", 
     name: row.name_g,
     mass: row.mass_g,
-    orbital_period: row.orbital_period_g,
-    semi_major_axis: row.semi_major_axis_g
+    semi_major_axis: planetRValues[6],
+    orbital_period: planetDaValues[6]
   },
   {
     rockFromSun: "planet7", 
     name: row.name_h,
     mass: row.mass_h,
-    orbital_period: row.orbital_period_h,
-    semi_major_axis: row.semi_major_axis_h
+    semi_major_axis: planetRValues[7],
+    orbital_period: planetDaValues[7]
   }
 ]
 
@@ -102,6 +101,5 @@ planetsFiltered.forEach((planet) => {
     parseFloat(planet.orbital_period)
   );
 
-  myPlanet.greeting();
   myPlanet.moveTimer(myPlanet);
 });
