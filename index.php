@@ -274,18 +274,6 @@
          }
 
          echo '</div>'; 
-
-
-// instantiate planet objects and loops
-
-// for ($j = 0; $j<$nPlanet; $j++){
-// echo "const planet".$j." = new Planet('planet".$j."', document.getElementById('planet".$j."'), 0, ".$planetRvalues[$j].", ".$planetDAvalues[$j].");";
-// echo "planet".$j.".greeting();";
-// // this function can probably get moved into the class
-// echo "const loopTimer".$j." = setInterval(function(){";
-// echo "planet".$j.".move();";
-// echo "}, 50);"; // the function is called every 50 milliseconds
-// }
 ?>
 
       </div>
@@ -294,7 +282,6 @@
         // grab the data in js 
         // TODO: cleanse data
         var row = <?=json_encode($row)?>;
-        var nPlanet = <?=json_encode($nPlanet)?>;
       </script>
 
       <div id="RParticipants" class="w3-container menu2 w3-padding-48 w3-card">
