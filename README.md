@@ -1,4 +1,4 @@
-#ESO Science Ambassadors
+# ESO Science Ambassadors
 
 ## Getting started
 
