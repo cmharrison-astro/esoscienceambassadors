@@ -47,11 +47,11 @@
 <?php
   $exoName = $_GET['exoName'];
   if (empty($exoName)) {
-    $exoName='61_vir';
+    $exoName='Kepler_79';
   }
   $exoName_D = $_GET['exoName_D'];
   if (empty($exoName_D)) {
-    $exoName_D='61 vir';
+    $exoName_D='Kepler_79';
   }
 ?>
 
