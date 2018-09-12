@@ -12,11 +12,11 @@
     gtag('config', 'UA-125571662-1');
   </script>
 
-  <title>ESO Science Ambassadors</title>
+  <title>Biggest Eye on the Sky</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="ESO, European Organisation for Astronomical Research in the Southern Hemisphere" />
-  <meta name="keywords" content="ESO, Astronomy, Astrophysics, Astronomie, Suedsternwarte, telescopes, planets, stars, galaxies, universe, NTT, VLT, VLTI, ALMA, ELT, La Silla, Paranal, Garching, Chile, science, ambassadors, exoplanets" />
+  <meta name="keywords" content="ESO, Astronomy, Astrophysics, Astronomie, Suedsternwarte, telescopes, planets, stars, galaxies, universe, NTT, VLT, VLTI, ALMA, ELT, La Silla, Paranal, Garching, Chile, science, ambassadors, exoplanets, biggest eye on the sky" />
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
@@ -58,19 +58,13 @@
 
 <!-- Set up languages -->
 <?php
-  $home_txt='Home';
-  $about_txt='About Us';
-  $resources_txt='Resources';
-  $exoplanets_txt='Exoplanets';
-  $foreveryone_txt='For Everyone';
-  $foreducators_txt='For Educators';
-  $explorePlanets_txt='EXPLORE YOUR<br>EXOPLANETS';
+  $lang_file='lang_en.php';  
 
   if ($lang == 'fr'){
-    $about_txt='Sur';
-    $resources_txt='Ressources';
-    $explorePlanets_txt='EXPLOREZ VOS<br>EXOPLANETS';
+    $lang_file='lang_fr.php';
   }
+
+  include_once 'languages/'.$lang_file;
 ?>
 
 
@@ -103,7 +97,7 @@
     <a href="#exoplanets" class="w3-button w3-block w3-eso" style="font-size:25px"><?=$explorePlanets_txt?></a>
   </div>
   <div class="w3-display-bottomright w3-center w3-padding-large">
-    <span class="w3-text-white">Credit:ESO/L. Calçada</span>
+    <span class="w3-text-white">ESO/L. Calçada</span>
   </div>
 </header>
 
@@ -155,7 +149,7 @@
     <!-- Will then set the properties of animated exoplanet system -->
     <div class="w3-row">
       <div class="w3-col s5">
-        <button onclick="chooseStarMenu()" class="w3-button w3-red">Select Star! <i class="arrow down"></i></button>
+        <button onclick="chooseStarMenu()" class="w3-button w3-red"><?=$select_star_txt?><i class="arrow down"></i></button>
         <div id="Exoplanets" class="w3-dropdown-content w3-bar-block w3-border">
           <?php
             $sql = "SELECT star_name, star_name_2 FROM exoplanets";
@@ -174,7 +168,7 @@
           ?>
         </div>
       </div>
-      <div style="w3-col s5">Selected Star: <span class="w3-tag w3-wide" style="background-color:#000000"><?=$exoName_D?></span></div>
+      <div style="w3-col s5"><?=$selected_star_txt?><span class="w3-tag w3-wide" style="background-color:#000000"><?=$exoName_D?></span></div>
     </div>
 
 
@@ -183,13 +177,13 @@
 
       <div class="w3-row w3-center w3-card w3-padding">
         <a href="javascript:void(0)" onclick="openMenu2(event, 'RAnimation');" id="myLink2">
-        <div class="w3-col s4 tablink2">Overview</div>
+        <div class="w3-col s4 tablink2"><?=$overview_txt?></div>
         </a>
         <a href="javascript:void(0)" onclick="openMenu2(event, 'RParticipants');">
-        <div class="w3-col s4 tablink2">Your Pics!</div>
+        <div class="w3-col s4 tablink2"><?=$yourpics_txt?></div>
         </a>
         <a href="javascript:void(0)" onclick="openMenu2(event, 'RProfessional');">
-        <div class="w3-col s4 tablink2">Other Pics</div>
+        <div class="w3-col s4 tablink2"><?=$otherpics_txt?></div>
         </a>
       </div>
 
@@ -312,11 +306,6 @@
   </div>
  </div>
 
-
-
-
-
-
 <!-- Resources Container -->
 <!-- ++++++++++++++++++++ -->
 <div class="w3-container" id="resources"><br />
@@ -353,7 +342,7 @@
           <div class="w3-display-bottomleft w3-tiny w3-text-black" style="padding-left:20px;padding-bottom:5px">ESO</div>
         </div>
       </div>
-      <h5>Exoplanets</h5>
+      <h5><?=$exoplanets_txt?></h5>
       <div class="w3-row">
         <div class="w3-display-container w3-third w3-padding-small">
           <a href="http://eso.org/public/unitedkingdom/images/archive/category/exoplanets/" target="_blank" data-toggle="tooltip" title="Image Archive">
@@ -391,7 +380,19 @@
           <div class="w3-display-bottomleft w3-tiny w3-text-white" style="padding-left:20px;padding-bottom:5px">ESO/Onsala Space Observatory/I. Lapkin</div>
         </div>
       </div>
-
+      <h5>ESO</h5>
+      <div class="w3-row">
+        <div class="w3-display-container w3-third w3-padding-small">
+          <a href="https://www.eso.org/public/videos/archive/category/esocast/" target="_blank" data-toggle="tooltip" title="ESOCast">
+          <img src="images/general/esocast.png"  alt="ESOCast" style="width:100%">
+          </a>
+        </div>
+        <div class="w3-display-container w3-third w3-padding-small">
+          <a href="https://supernova.eso.org" target="_blank" data-toggle="tooltip" title="ESO Supernova">
+          <img src="images/general/es-logo-blue.jpg" alt="ESO Supernova" style="width:100%">
+          </a>
+        </div>
+      </div>
     </div>
     
     <script>
@@ -401,7 +402,7 @@
     </script>
 
     <div id="REducators" class="w3-container menu w3-padding-48 w3-card">
-      <p class="w3-text-grey">Some Resources for Educators will be placed here as soon as possible.</p><br>
+      <?php include 'pages/educators/educators_'.$lang.'.html';?>
     </div>  
 
   </div>
@@ -419,10 +420,10 @@
 
 <!-- Footer -->
 <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
-  <button onclick="creditPopUp()">Credits</button>
+  <button onclick="creditPopUp()"><?=$credits_txt?></button>
   <script>
     function creditPopUp() {
-      alert("Project Co-ordinators:\n Chris Harrison; Fabrizio Arrigoni Battaia; Lucy Moorcraft\nWebsite:\n Chris Harrison; Jasmin Patel\nAmbassadors:\n Hugo Messias\n Miguel Querejeta\nContributions from:\n Tania Johnston\n Wolfgang Vieser\n Stella-Maria Chasiotis-Klingner\n Nicole Shearer\n Saskia\n Elizabeth\n Alex");
+      alert("Project Co-ordinators:\n Chris Harrison; Fabrizio Arrigoni Battaia; Lucy Moorcraft\nWebsite:\n Chris Harrison; Jasmin Patel\nAmbassadors:\n Anne-Laure Cheffot\n Chiara Circosta\n Jesús M. Corral-Santana\n Jeremy Fensch\n Chris Harrison\n Aleksandra Hamanowicz\n Miranda Jarvis\n Hugo Messias\n Miguel Querejeta\n Jan Scholtz\n Dominika Wylezalek\n Anita Zanella\nTremendous support from:\n Mylene Andre\n Stella-Maria Chasiotis-Klingner\n Tania Johnston\n Nicole Shearer\n Nelma Silva\n Alasdair Thomson\n Wolfgang Vieser\n Sebastian Wassill\n Saskia\n Elizabeth\n Alex\nFinancial Support from ESO SSDF");
     }
   </script>
 </footer>

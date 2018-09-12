@@ -23,6 +23,7 @@ Desktop.ini
 
 # keep config offline
 config/db-config.php
+config/sample-config.php
 
 ### JAVASCIPT/NODE STUFF ###
 
