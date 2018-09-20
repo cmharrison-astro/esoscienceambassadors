@@ -122,7 +122,7 @@
         $handle = opendir(dirname(realpath(__FILE__)).'/images/ambassadors/');
         while($ambimages = readdir($handle)){
     
-          if($ambimages !== '.' && $ambimages !== '..'){
+          if($ambimages !== '.' && $ambimages !== '..' && $ambimages !== '.DS_Store'){
             $exif = exif_read_data('images/ambassadors/'.$ambimages.'', 0, true);
             foreach ($exif['COMPUTED'] as $header => $value) {
               if($header==UserComment){$comment = $value;}
@@ -249,7 +249,7 @@
           echo '</div>';
           echo '<div class="w3-third w3-padding-small">';
           echo '<b>Star Temp.:</b> '.number_format($row['star_teff']-273., 0, '.', ',').' C<br />';
-          echo '<b>Distance:</b> '.number_format($row['star_distance']*3.26156, 1, '.', ',').' light yrs<br />';
+          //if ($row['star_distance'] =! 0.0){echo '<b>Distance:</b> '.number_format($row['star_distance']*3.26156, 1, '.', ',').' light yrs<br />';}
           echo '<b>Fact</b> '.$row['interesting_fact'].'<br />';
           echo '<b>Confirmed planets:</b> '.$nPlanet.'<br />';
           for ($j = 0; $j<$nPlanet; $j++){
@@ -278,8 +278,17 @@
       </script>
 
       <div id="RParticipants" class="w3-container menu2 w3-padding-48 w3-card">
-        <h5>Your Pics!</h5>
-        <p class="w3-text-grey">Slider for participants artist impressions</p><br>
+        <?php
+          $exohandle_pp = opendir(dirname(realpath(__FILE__)).'/images/exoplanets/'.$exoName.'/participants/');
+          while($exoimages_pp = readdir($exohandle_pp)){
+            if($exoimages_pp !== '.' && $exoimages_pp !== '..'){
+              echo '<div class="w3-display-container w3-center mySlides3"><img src="images/exoplanets/'.$exoName.'/participants/'.$exoimages_pp.'" style="width:100%">
+              </div>';  
+            }
+          }   
+        ?>
+        <button class="w3-button w3-display-left w3-black" onclick="plusDivs3(-1)">&#10094;</button>
+        <button class="w3-button w3-display-right w3-black" onclick="plusDivs3(1)">&#10095;</button>
       </div> 
 
       <div id="RProfessional" class="w3-container menu2 w3-padding-48 w3-card">
@@ -423,7 +432,7 @@
   <button onclick="creditPopUp()"><?=$credits_txt?></button>
   <script>
     function creditPopUp() {
-      alert("Project Co-ordinators:\n Chris Harrison; Fabrizio Arrigoni Battaia; Lucy Moorcraft\nWebsite:\n Chris Harrison; Jasmin Patel\nAmbassadors:\n Anne-Laure Cheffot\n Chiara Circosta\n Jesús M. Corral-Santana\n Jeremy Fensch\n Chris Harrison\n Aleksandra Hamanowicz\n Miranda Jarvis\n Hugo Messias\n Miguel Querejeta\n Jan Scholtz\n Dominika Wylezalek\n Anita Zanella\nTremendous support from:\n Mylene Andre\n Stella-Maria Chasiotis-Klingner\n Tania Johnston\n Nicole Shearer\n Nelma Silva\n Alasdair Thomson\n Wolfgang Vieser\n Sebastian Wassill\n Saskia\n Elizabeth\n Alex\nFinancial Support from ESO SSDF");
+      alert("Project Co-ordinators:\n Chris Harrison; Fabrizio Arrigoni Battaia; Lucy Moorcraft\nWebsite:\n Chris Harrison; Jasmin Patel\nAmbassadors:\n Richard Anderson\n Chiara Circosta\n Jesús M. Corral-Santana\n Jeremy Fensch\n Chris Harrison\n Aleksandra Hamanowicz\n Miranda Jarvis\n Hugo Messias\n Miguel Querejeta\n Jan Scholtz\n Dominika Wylezalek\n Anita Zanella\nTremendous support from:\n Mylene Andre\n Stella-Maria Chasiotis-Klingner\n Anne-Laure Cheffot\n Tania Johnston\n Mariya Lyubenova\n Nicole Shearer\n Nelma Silva\n Alasdair Thomson\n Wolfgang Vieser\n Sebastian Wassill\n Saskia\n Elizabeth\n Alex\nFinancial Support from ESO SSDF");
     }
   </script>
 </footer>
@@ -433,6 +442,7 @@
   <script src="dist/orbits.js"></script>
   <script src="dist/slider.js"></script>
   <script src="dist/slider2.js"></script>
+  <script src="dist/slider3.js"></script>
   <script src="dist/tabbed_menu.js"></script>
   <script src="dist/tabbed_menu2.js"></script>
   <script src="dist/dropdown_menu.js"></script>
