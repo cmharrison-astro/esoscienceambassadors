@@ -279,10 +279,10 @@
 
       <div id="RParticipants" class="w3-container menu2 w3-padding-48 w3-card">
         <?php
-          $exohandle_pp = opendir(dirname(realpath(__FILE__)).'/images/exoplanets/'.$exoName.'/participants/');
+          $exohandle_pp = opendir(dirname(realpath(__FILE__)).'/images/exoplanets/'.$exoName.);
           while($exoimages_pp = readdir($exohandle_pp)){
             if($exoimages_pp !== '.' && $exoimages_pp !== '..'){
-              echo '<div class="w3-display-container w3-center mySlides3"><img src="images/exoplanets/'.$exoName.'/participants/'.$exoimages_pp.'" style="width:100%">
+              echo '<div class="w3-display-container w3-center mySlides3"><img src="images/exoplanets/'.$exoName.'/'.$exoimages_pp.'" style="width:100%">
               </div>';  
             }
           }   
