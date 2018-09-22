@@ -20,6 +20,7 @@
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+
 </head>
 
 <body>
@@ -124,8 +125,9 @@
     
           if($ambimages !== '.' && $ambimages !== '..' && $ambimages !== '.DS_Store'){
             $exif = exif_read_data('images/ambassadors/'.$ambimages.'', 0, true);
+            $comment = "";
             foreach ($exif['COMPUTED'] as $header => $value) {
-              if($header==UserComment){$comment = $value;}
+              if($header=='UserComment'){$comment = $value;}
             }
             echo '<div class="w3-display-container mySlides"><img src="images/ambassadors/'.$ambimages.'" style="width:100%">
             <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">'.$comment.'</div></div>';  
@@ -148,7 +150,7 @@
     <!-- Auto generated drop down menu from SQL table -->
     <!-- Will then set the properties of animated exoplanet system -->
     <div class="w3-row">
-      <div class="w3-col s5">
+    <div class="w3-col w3-padding-8 s7">
         <button onclick="chooseStarMenu()" class="w3-button w3-red"><?=$select_star_txt?><i class="arrow down"></i></button>
         <div id="Exoplanets" class="w3-dropdown-content w3-bar-block w3-border">
           <?php
@@ -159,7 +161,7 @@
             // output data of each row
               while($row = $result->fetch_assoc()) {
                 if($row["star_name_2"] != ""){
-                echo '<a href="./?exoName='.$row["star_name_2"].'&exoName_D='.$row["star_name"].'#exoplanets" class="w3-bar-item w3-button">'.$row["star_name"].'</a>';
+                echo '<a href="./?lang='.$lang.'&exoName='.$row["star_name_2"].'&exoName_D='.$row["star_name"].'#exoplanets" class="w3-bar-item w3-button">'.$row["star_name"].'</a>';
                 }
               }
             } else {
@@ -168,7 +170,7 @@
           ?>
         </div>
       </div>
-      <div style="w3-col s5"><?=$selected_star_txt?><span class="w3-tag w3-wide" style="background-color:#000000"><?=$exoName_D?></span></div>
+      <div style="w3-col w3-padding-8 s7"><?=$selected_star_txt?><span class="w3-tag w3-wide" style="background-color:#000000"><?=$exoName_D?></span></div>
     </div>
 
 
@@ -177,13 +179,13 @@
 
       <div class="w3-row w3-center w3-card w3-padding">
         <a href="javascript:void(0)" onclick="openMenu2(event, 'RAnimation');" id="myLink2">
-        <div class="w3-col s4 tablink2"><?=$overview_txt?></div>
+        <div class="w3-col s4 tablink2"><u><?=$overview_txt?></u></div>
         </a>
         <a href="javascript:void(0)" onclick="openMenu2(event, 'RParticipants');">
-        <div class="w3-col s4 tablink2"><?=$yourpics_txt?></div>
+        <div class="w3-col s4 tablink2"><u><?=$yourpics_txt?></u></div>
         </a>
         <a href="javascript:void(0)" onclick="openMenu2(event, 'RProfessional');">
-        <div class="w3-col s4 tablink2"><?=$otherpics_txt?></div>
+        <div class="w3-col s4 tablink2"><u><?=$otherpics_txt?></u></div>
         </a>
       </div>
 
@@ -281,7 +283,7 @@
       <?php
           $exohandle_pp = opendir(dirname(realpath(__FILE__)).'/images/exoplanets/'.$exoName.'');
           while($exoimages_pp = readdir($exohandle_pp)){
-            if($exoimages_pp !== '.' && $exoimages_pp !== '..'){
+            if($exoimages_pp !== '.' && $exoimages_pp !== '..' && $exoimages_pp !== '.DS_Store' && $exoimages_pp !== 'professional'){
               echo '<div class="w3-display-container w3-center mySlides3"><img src="images/exoplanets/'.$exoName.'/'.$exoimages_pp.'" style="width:100%"></div>';  
             }
           }   
@@ -295,15 +297,17 @@
         <?php
           $exohandle = opendir(dirname(realpath(__FILE__)).'/images/exoplanets/'.$exoName.'/professional/');
           while($exoimages = readdir($exohandle)){
-            if($exoimages !== '.' && $exoimages !== '..'){
+            if($exoimages !== '.' && $exoimages !== '..' && $exoimages !== '.DS_Store'){
               $exif = exif_read_data('images/exoplanets/'.$exoName.'/professional/'.$exoimages.'', 0, true);
+              $comment = "";
+              $copyright = "";
               foreach ($exif['IFD0'] as $header => $value) {
                 if($header==Title){$comment = $value;}
                 if($header==Author){$copyright = $value;}
               }
               echo '<div class="w3-display-container w3-center mySlides2"><img src="images/exoplanets/'.$exoName.'/professional/'.$exoimages.'" style="width:100%">
-              <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">'.$comment.'</div>
-              <div class="w3-display-bottomright w3-small w3-container w3-padding-16 w3-black">'.$copyright.'</div>
+              <div class="w3-display-bottomleft w3-small w3-container w3-padding-4 w3-black">'.$comment.'</div>
+              <div class="w3-display-bottomright w3-small w3-container w3-padding-4 w3-black">'.$copyright.'</div>
               </div>';  
             }
           }   
@@ -324,10 +328,10 @@
 
     <div class="w3-row w3-center w3-card w3-padding">
       <a href="javascript:void(0)" onclick="openMenu(event, 'REveryone');" id="myLink">
-        <div class="w3-col s6 tablink"><?=$foreveryone_txt?></div>
+        <div class="w3-col s6 tablink"><u><?=$foreveryone_txt?></u></div>
       </a>
       <a href="javascript:void(0)" onclick="openMenu(event, 'REducators');">
-        <div class="w3-col s6 tablink"><?=$foreducators_txt?></div>
+        <div class="w3-col s6 tablink"><u><?=$foreducators_txt?></u></div>
       </a>
     </div>
 
@@ -432,20 +436,20 @@
   <button onclick="creditPopUp()"><?=$credits_txt?></button>
   <script>
     function creditPopUp() {
-      alert("Project Co-ordinators:\n Chris Harrison; Fabrizio Arrigoni Battaia; Lucy Moorcraft\nWebsite:\n Chris Harrison; Jasmin Patel\nAmbassadors:\n Richard Anderson\n Chiara Circosta\n Jesús M. Corral-Santana\n Jeremy Fensch\n Chris Harrison\n Aleksandra Hamanowicz\n Miranda Jarvis\n Hugo Messias\n Miguel Querejeta\n Jan Scholtz\n Dominika Wylezalek\n Anita Zanella\nTremendous support from:\n Mylene Andre\n Stella-Maria Chasiotis-Klingner\n Anne-Laure Cheffot\n Tania Johnston\n Mariya Lyubenova\n Nicole Shearer\n Nelma Silva\n Alasdair Thomson\n Wolfgang Vieser\n Sebastian Wassill\n Saskia\n Elizabeth\n Alex\nFinancial Support from ESO SSDF");
+      alert("Project Co-ordinators:\n Chris Harrison; Fabrizio Arrigoni Battaia; Lucy Moorcraft\nWebsite:\n Chris Harrison; Jasmin Patel\nAmbassadors:\n Richard Anderson\n Chiara Circosta\n Jesús M. Corral-Santana\n Jeremy Fensch\n Chris Harrison\n Aleksandra Hamanowicz\n Miranda Jarvis\n Hugo Messias\n Miguel Querejeta\n Jan Scholtz\n Dominika Wylezalek\n Anita Zanella\nTremendous support from:\n Mylene Andre\n Stella-Maria Chasiotis-Klingner\n Anne-Laure Cheffot\n Tania Johnston\n Mariya Lyubenova\n Juliette Ortet\n Nicole Shearer\n Nelma Silva\n Alasdair Thomson\n Wolfgang Vieser\n Sebastian Wassill\n Saskia\n Elizabeth\n Alex\nFinancial Support from ESO SSDF");
     }
   </script>
 </footer>
 
 
 <!-- Scripts -->
-  <script src="dist/orbits.js"></script>
-  <script src="dist/slider.js"></script>
-  <script src="dist/slider2.js"></script>
-  <script src="dist/slider3.js"></script>
-  <script src="dist/tabbed_menu.js"></script>
-  <script src="dist/tabbed_menu2.js"></script>
-  <script src="dist/dropdown_menu.js"></script>
-
+<script src="dist/dropdown_menu.js"></script>
+<script src="dist/tabbed_menu.js"></script>
+<script src="dist/tabbed_menu2.js"></script>
+<script src="dist/slider.js"></script>
+<script src="dist/slider2.js"></script>
+<script src="dist/slider3.js"></script>
+<script src="dist/orbits.js"></script>
+ 
 </body>
 </html>
