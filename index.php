@@ -25,13 +25,6 @@
 
 <body>
 
-<?php
-  // development helper function
-  function debugToConsole($msg) { 
-    echo "<script>console.log(".json_encode($msg).")</script>";
-  }
-?>
-
 <!-- database -->
 <?php include ('./db-connection.php'); ?>
 
@@ -91,8 +84,6 @@
   <?php if(!isset($_COOKIE["comply_cookie"])) { ?>
     <div id="cookies";>
       <p>Our website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in our <a href="yourPolicy">privacy policy</a>.
-        <!-- <span class="cookie-accept" title="Okay, close">Close</span> -->
-
         <button onclick="cookieBannerClose()">Close</button>
       </p>
     </div>
