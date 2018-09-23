@@ -25,6 +25,13 @@
 
 <body>
 
+<?php	
+  // development helper function	
+  function debugToConsole($msg) {
+    echo "<script>console.log(".json_encode($msg).")</script>";	
+  }
+?>
+
 <!-- database -->
 <?php include ('./db-connection.php'); ?>
 
