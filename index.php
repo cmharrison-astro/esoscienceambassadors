@@ -56,7 +56,6 @@
   }
 ?>
 
-
 <!-- Set up languages -->
 <?php
   $lang_file='lang_en.php';  
@@ -67,8 +66,6 @@
 
   include_once 'languages/'.$lang_file;
 ?>
-
-
 
 <!-- Links Menu (sit on top) -->
 <div class="w3-top">
@@ -90,6 +87,17 @@
       </div>
     </div>
   </div>
+
+  <?php if(!isset($_COOKIE["comply_cookie"])) { ?>
+    <div id="cookies";>
+      <p>Our website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in our <a href="yourPolicy">privacy policy</a>.
+        <!-- <span class="cookie-accept" title="Okay, close">Close</span> -->
+
+        <button onclick="cookieBannerClose()">Close</button>
+      </p>
+    </div>
+  <?php } ?>
+
 </div>
 
 <!-- Header with image -->
@@ -443,6 +451,7 @@
 
 
 <!-- Scripts -->
+<script src="dist/cookie-message.js"></script>
 <script src="dist/dropdown_menu.js"></script>
 <script src="dist/tabbed_menu.js"></script>
 <script src="dist/tabbed_menu2.js"></script>
