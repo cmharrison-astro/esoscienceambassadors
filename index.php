@@ -25,13 +25,6 @@
 
 <body>
 
-<?php
-  // development helper function
-  function debugToConsole($msg) { 
-    echo "<script>console.log(".json_encode($msg).")</script>";
-  }
-?>
-
 <!-- database -->
 <?php include ('./db-connection.php'); ?>
 
@@ -56,7 +49,6 @@
   }
 ?>
 
-
 <!-- Set up languages -->
 <?php
   $lang_file='lang_en.php';  
@@ -67,8 +59,6 @@
 
   include_once 'languages/'.$lang_file;
 ?>
-
-
 
 <!-- Links Menu (sit on top) -->
 <div class="w3-top">
@@ -90,6 +80,15 @@
       </div>
     </div>
   </div>
+
+  <?php if(!isset($_COOKIE["comply_cookie"])) { ?>
+    <div id="cookies";>
+      <p>Our website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in our <a href="yourPolicy">privacy policy</a>.
+        <button onclick="cookieBannerClose()">Close</button>
+      </p>
+    </div>
+  <?php } ?>
+
 </div>
 
 <!-- Header with image -->
@@ -443,6 +442,7 @@
 
 
 <!-- Scripts -->
+<script src="dist/cookie-message.js"></script>
 <script src="dist/dropdown_menu.js"></script>
 <script src="dist/tabbed_menu.js"></script>
 <script src="dist/tabbed_menu2.js"></script>
