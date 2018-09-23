@@ -22,6 +22,7 @@ Desktop.ini
 !/.travis.yml
 
 # keep config offline
+config/dud.php
 config/db-config.php
 config/sample-config.php
 
