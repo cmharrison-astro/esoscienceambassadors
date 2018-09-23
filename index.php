@@ -439,14 +439,23 @@
 
 <!-- Footer -->
 <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
-  <button onclick="creditPopUp()"><?=$credits_txt?></button>
-  <script>
-    function creditPopUp() {
-      alert("Project Co-ordinators:\n Chris Harrison; Fabrizio Arrigoni Battaia; Lucy Moorcraft\nWebsite:\n Chris Harrison; Jasmin Patel\nAmbassadors:\n Richard Anderson\n Chiara Circosta\n Jesús M. Corral-Santana\n Jeremy Fensch\n Chris Harrison\n Aleksandra Hamanowicz\n Miranda Jarvis\n Hugo Messias\n Miguel Querejeta\n Jan Scholtz\n Dominika Wylezalek\n Anita Zanella\nTremendous support from:\n Mylene Andre\n Stella-Maria Chasiotis-Klingner\n Anne-Laure Cheffot\n Tania Johnston\n Mariya Lyubenova\n Juliette Ortet\n Nicole Shearer\n Nelma Silva\n Alasdair Thomson\n Wolfgang Vieser\n Sebastian Wassill\n Saskia\n Elizabeth\n Alex\nFinancial Support from ESO SSDF");
-    }
-  </script>
-</footer>
+  <button class="modal-button" onclick="modalOpen()"><?=$credits_txt?></button>
+  <div id="credits-modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="modalClose()">&times;</span>
+      <h3>Project Co-ordinators:</h3>
+      <p>Chris Harrison; Fabrizio Arrigoni Battaia; Lucy Moorcraft</p>
+      <h3>Website:</h3>
+      <p>Chris Harrison; Jasmin Patel</p>
+      <h3>Ambassadors:</h3>
+      <p>Richard Anderson, Chiara Circosta, Jesús M. Corral-Santana, Jeremy Fensch, Chris Harrison, Aleksandra Hamanowicz, Miranda Jarvis, Hugo Messias, Miguel Querejeta, Jan Scholtz, Dominika Wylezalek, Anita Zanella</p>
+      <h3>Tremendous support from:</h3>
+      <p>Mylene Andre, Stella-Maria Chasiotis-Klingner, Anne-Laure Cheffot, Tania Johnston, Mariya Lyubenova, Juliette Ortet, Nicole Shearer, Nelma Silva, Alasdair Thomson, Wolfgang Vieser, Sebastian Wassill, Saskia, Elizabeth, Alex</p>
+      <h3>Financial Support from ESO SSDF</h3>
+    </div>
+  </div>
 
+</footer>
 
 <!-- Scripts -->
 <script src="dist/cookie-message.js"></script>
@@ -457,6 +466,7 @@
 <script src="dist/slider2.js"></script>
 <script src="dist/slider3.js"></script>
 <script src="dist/orbits.js"></script>
+<script src="dist/modal.js"></script>
  
 </body>
 </html>
