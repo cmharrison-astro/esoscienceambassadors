@@ -1,6 +1,10 @@
 ﻿/* W3.CSS 4.10 February 2018 by Jan Egil and Borge Refsnes */
 html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
+.js_enabled #cookie-message {
+  display: none;
+}
+
 /* Exoplanet orbits */
 .space {
   position: relative;

@@ -31,6 +31,12 @@
   }
 ?>
 
+<div id="cookie-message" style="z-index: 100000000">
+  <p>
+    Your cookie message goes HERE
+  </p>
+</div>
+
 <!-- database -->
 <?php include ('./db-connection.php'); ?>
 
@@ -446,6 +452,13 @@
   <script src="dist/tabbed_menu.js"></script>
   <script src="dist/tabbed_menu2.js"></script>
   <script src="dist/dropdown_menu.js"></script>
+  <script src="dist/cookie-message.js"></script>
 
 </body>
+
+<script>
+    // Detect JS support
+    document.body.className = document.body.className + " js_enabled";
+  </script>
+
 </html>
