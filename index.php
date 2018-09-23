@@ -48,11 +48,11 @@
 <?php
   $exoName = $_GET['exoName'];
   if (empty($exoName)) {
-    $exoName='Kepler_79';
+    $exoName='GJ_581';
   }
   $exoName_D = $_GET['exoName_D'];
   if (empty($exoName_D)) {
-    $exoName_D='Kepler_79';
+    $exoName_D='GJ_581';
   }
 ?>
 

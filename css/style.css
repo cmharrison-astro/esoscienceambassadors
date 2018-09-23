@@ -26,7 +26,7 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 }
 .planet {
   width: 10px; height: 10px;
-  background-color: #ccc;
+  background-color: #000;
   /* box-shadow: inset -10px -10px 10px rgba(0,0,0,0.25); */
 }
 
