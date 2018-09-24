@@ -22,6 +22,10 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
   z-index: 999;
 }
 
+#cookies a {
+  text-decoration: underline;
+}
+
 #cookies .cookie-accept {
   padding-left: 10px;
   cursor: pointer;
@@ -49,7 +53,7 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 20% auto;
+  margin: 10% auto 5% auto;
   padding: 5%;
   border: 1px solid #888;
   width: 75%;
