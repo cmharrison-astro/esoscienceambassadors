@@ -450,10 +450,10 @@
       <p>Chris Harrison; Fabrizio Arrigoni Battaia; Lucy Moorcraft</p>
       <h3>Website:</h3>
       <p>Chris Harrison; Jasmin Patel</p>
-      <h3>Ambassadors:</h3>
+      <h3>ESO Ambassadors:</h3>
       <p>Richard Anderson, Chiara Circosta, Jesús M. Corral-Santana, Jeremy Fensch, Chris Harrison, Aleksandra Hamanowicz, Miranda Jarvis, Hugo Messias, Miguel Querejeta, Jan Scholtz, Dominika Wylezalek, Anita Zanella</p>
-      <h3>Tremendous support from:</h3>
-      <p>Mylene Andre, Stella-Maria Chasiotis-Klingner, Anne-Laure Cheffot, Tania Johnston, Mariya Lyubenova, Juliette Ortet, Nicole Shearer, Nelma Silva, Alasdair Thomson, Wolfgang Vieser, Sebastian Wassill, Saskia, Elizabeth, Alex</p>
+      <h3>Tremendous contributions from:</h3>
+      <p>Mylene Andre, Stella-Maria Chasiotis-Klingner, Anne-Laure Cheffot, Carlo Felice Manara, Tracy Garratt (Hertfordshire University), Tania Johnston, Romain Lucchesi, Mariya Lyubenova, Anna Miotello, Juliette Ortet, Nicole Shearer, Nelma Silva, Alasdair Thomson (Manchest University), Wolfgang Vieser, Sebastian Wassill, Kate Wetherell (Manchester University), Saskia, Elizabeth, Alex</p>
       <h3>Financial Support from ESO SSDF</h3>
     </div>
   </div>
