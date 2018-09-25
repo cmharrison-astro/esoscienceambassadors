@@ -14,7 +14,7 @@ class Planet {
     this.a = 0; // in radian
     this.x = 0;
     this.y = 0;
-    this.center = { x: center - magicNumber, y: 175 - magicNumber };
+    this.center = { x: center - magicNumber, y: 150 - magicNumber };
 
     this.move = () => {
       this.a += this.orbitalPeriod;

@@ -251,7 +251,7 @@
 
           for ($j = 0; $j<$nPlanet; $j++){
             //calculate css/java parameters based on real data
-            $planetRValues[$j] = 150*$planetDistances[$j]/$maxPlanetDist;
+            $planetRValues[$j] = 165*$planetDistances[$j]/$maxPlanetDist;
             $planetSizeValues[$j] = 10*$planetMass[$j]/$maxPlanetMass;
             $planetDaValues[$j] = 0.005*$maxPlanetPeriod/$planetPeriods[$j];
 
