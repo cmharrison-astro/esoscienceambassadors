@@ -91,7 +91,7 @@
   <?php if(!isset($_COOKIE["comply_cookie"])) { ?>
     <div id="cookies";>
       <p>Our website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in our
-        <a onclick="modalOpen('privacy-policy-modal')">privacy policy</a>.
+        <a onclick="modalOpen('privacy-policy-modal')"><u>privacy policy</u></a>.
         <button onclick="cookieBannerClose()">Close</button>
       </p>
     </div>
