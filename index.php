@@ -90,11 +90,13 @@
 
   <?php if(!isset($_COOKIE["comply_cookie"])) { ?>
     <div id="cookies";>
-      <p>Our website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in our
-        <a onclick="modalOpen('privacy-policy-modal')"><u>privacy policy</u></a>.
-        <button onclick="cookieBannerClose()">Close</button>
-      </p>
-    </div>
+    <?php if ($lang == 'fr'){?>
+     <p>Notre site utilise des cookies. En continuant, nous assumons votre permission de déployer des cookies, comme détaillé dans notre <a onclick="modalOpen('privacy-policy-modal')"><u>politique de confidentialité.</u><button onclick="cookieBannerClose()">Fermer</button></p></div>";
+      <?php } ?>
+    <?php if ($lang == 'en'){?>
+      <p>Our website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in our <a onclick="modalOpen('privacy-policy-modal')"><u>privacy policy</u></a>. <button onclick="cookieBannerClose()">Close</button></p></div>";
+    <?php } ?>
+
   <?php } ?>
 
 </div>
