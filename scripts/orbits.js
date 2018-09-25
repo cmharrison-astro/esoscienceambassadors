@@ -1,3 +1,10 @@
+const element = document.getElementById('space');
+const style = window.getComputedStyle(element);
+const widthString = style.getPropertyValue('width');
+const widthInteger = Number(widthString.substring(0, widthString.length - 2));
+const center = widthInteger / 2;
+const magicNumber = 5;
+
 class Planet {
   constructor(name, htmlElement, orbitRadius, orbitalPeriod) {
     this.name = name;
@@ -7,10 +14,7 @@ class Planet {
     this.a = 0; // in radian
     this.x = 0;
     this.y = 0;
-    // Center is actually center minus half the size of the orbiting object
-    this.center = { x: (125 - 12.5), y: (125 - 12.5) };
-
-    // the x and y associated with center ARE NOT the same as the x and y associated with Planet
+    this.center = { x: center - magicNumber, y: 175 - magicNumber };
 
     this.move = () => {
       this.a += this.orbitalPeriod;
@@ -18,19 +22,15 @@ class Planet {
       this.y = this.center.y + (this.orbitRadius * Math.cos(this.a));
       this.htmlElement.style.top = this.y + "px";
       this.htmlElement.style.left = this.x + "px";
-    }
+    };
 
     this.moveTimer = planet => {
       setInterval( () => {
         planet.move();
-      }, 50);
-    }
-
-    this.greeting = () => {
-      console.log('Hi! I\'m ' + this.name + '.');
+      }, 45);
     };
   }
-};
+}
 
 const planets = [
   {

@@ -12,6 +12,10 @@
     gtag('config', 'UA-125571662-1');
   </script>
 
+  <script>
+    window.onresize = function(){ location.reload(); }
+  </script>
+
   <title>Biggest Eye on the Sky</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -242,13 +246,12 @@
 
 
           echo '<div class="w3-twothird w3-padding-large">
-          <div class="space"> 
+          <div id="space"> 
           <div class="star"></div>';
-          //<div class="orbit"></div>
 
           for ($j = 0; $j<$nPlanet; $j++){
             //calculate css/java parameters based on real data
-            $planetRValues[$j] = 200*$planetDistances[$j]/$maxPlanetDist;
+            $planetRValues[$j] = 150*$planetDistances[$j]/$maxPlanetDist;
             $planetSizeValues[$j] = 10*$planetMass[$j]/$maxPlanetMass;
             $planetDaValues[$j] = 0.005*$maxPlanetPeriod/$planetPeriods[$j];
 
