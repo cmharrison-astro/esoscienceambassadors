@@ -13,7 +13,7 @@
   $selected_star_txt="Selected Star: ";
   $credits_txt="Credits";
   $starTemptxt="Star Temp.";
-  $planetsConfirmedtxt="Planètes confirmées:";
+  $planetsConfirmedtxt="Confimed planets:";
   $facttxt="Fact";
   $privacytxt="Privacy Policy";
 ?>
