@@ -259,10 +259,10 @@
           echo '</div>';
           echo '</div>';
           echo '<div class="w3-third w3-padding-small">';
-          echo '<b>Star Temp.:</b> '.number_format($row['star_teff']-273., 0, '.', ',').' C<br />';
+          echo '<b>'.$starTemptxt.':</b> '.number_format($row['star_teff']-273., 0, '.', ',').' C<br />';
           //if ($row['star_distance'] =! 0.0){echo '<b>Distance:</b> '.number_format($row['star_distance']*3.26156, 1, '.', ',').' light yrs<br />';}
-          echo '<b>Fact</b> '.$row['interesting_fact'].'<br />';
-          echo '<b>Confirmed planets:</b> '.$nPlanet.'<br />';
+          echo '<b>'.$facttxt.':</b> '.$row['interesting_fact'].'<br />';
+          echo '<b>'.$planetsConfirmedtxt.'</b> '.$nPlanet.'<br />';
           for ($j = 0; $j<$nPlanet; $j++){
             echo $planetNames[$j].'<br />'; 
             //a='.$planetAvalues[$j].' dA='.$planetDaValues[$j].'size='. $planetSizeValues[$j].'<br />';  
@@ -442,9 +442,9 @@
 
 <!-- Footer -->
 <footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+  <h3>contact@biggesteyeonthesky.org</h3>
   <button class="modal-button" onclick="modalOpen('credits-modal')"><?=$credits_txt?></button>
-  <button class="modal-button" onclick="modalOpen('privacy-policy-modal')">Privacy Policy</button>
-
+  <button class="modal-button" onclick="modalOpen('privacy-policy-modal')"><?=$privacytxt?></button>
   <div id="credits-modal" class="modal">
     <div class="modal-content">
       <span class="modal-close" onclick="modalClose('credits-modal')">&times;</span>
