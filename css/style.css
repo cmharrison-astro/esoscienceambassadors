@@ -101,13 +101,22 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 }
 
 .star {
-  top: calc(50% - 10px);
-  right: calc(50% - 10px);
-  width: 15px;
-  height: 15px;  
+  top: calc(50% - 6px);
+  right: calc(50% - 6px);
+  width: 12px;
+  height: 12px;  
   background-color: rgb(216, 190, 29);
   /* box-shadow: inset -30px -30px 30px rgba(0,0,0,0.25); */
 }
+
+.star2 {
+    top: calc(50% - 20px);
+    right: calc(50% - 20px);
+    width: 8px;
+    height: 8px;  
+    background-color: rgb(216, 100, 29);
+    /* box-shadow: inset -30px -30px 30px rgba(0,0,0,0.25); */
+  }
 
 .planet {
   width: 10px; height: 10px;

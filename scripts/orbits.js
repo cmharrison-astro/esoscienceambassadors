@@ -4,7 +4,7 @@ const widthString = style.getPropertyValue('width');
 const widthInteger = Number(widthString.substring(0, widthString.length - 2));
 const center = widthInteger / 2;
 const magicNumber = 4;
-const magicNumberX = 0;
+const magicNumberX = 4;
 
 class Planet {
   constructor(name, htmlElement, orbitRadius, orbitalPeriod) {

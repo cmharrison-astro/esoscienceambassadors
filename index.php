@@ -244,16 +244,23 @@
           echo '<div class="w3-twothird w3-padding-large">
           <div id="space"> 
           <div class="star"></div>';
+          if ($exoName == "Kepler_16_AB"){
+            echo '<div class="star2"></div>';
+          }
 
           for ($j = 0; $j<$nPlanet; $j++){
             //calculate css/java parameters based on real data
             $planetRValues[$j] = 150*$planetDistances[$j]/$maxPlanetDist;
             $planetSizeValues[$j] = 10*$planetMass[$j]/$maxPlanetMass;
+            if ($planetSizeValues[$j] < 2){
+              $planetSizeValues[$j] = 2;
+            } //set min size
             $planetDaValues[$j] = 0.005*$maxPlanetPeriod/$planetPeriods[$j];
 
             //create div for each planet
+            //echo ''.$row["orbital_period_a"].'';
             echo '<div class="planet" id="planet'.$j.'" style="width:'.$planetSizeValues[$j].'px;height:'.$planetSizeValues[$j].'px"></div>';
-          
+
           }
           echo '</div>';
           echo '</div>';
@@ -265,7 +272,7 @@
           echo '</div>'; 
           echo '<div class="w3-row w3-padding-small">';
           for ($j = 0; $j<$nPlanet; $j++){
-            echo '<i>'.$planetNames[$j].'</i> <div class="w3-medium">(Mass='.number_format($planetMass[$j]*317.8, 2, '.', ',').' Earth Masses; Orbital Period='.number_format($planetPeriods[$j], 0, '.', ',').' Earth Days)</div>'; 
+            echo '<i>'.$planetNames[$j].'</i> <div class="w3-medium">(Mass='.number_format($planetMass[$j]*317.8, 2, '.', ',').' Earth Masses; Year Length='.number_format($planetPeriods[$j], 0, '.', ',').' Earth Days)</div>'; 
             //a='.$planetAvalues[$j].' dA='.$planetDaValues[$j].'size='. $planetSizeValues[$j].'<br />';  
             //echo "const planet".($j+1)." = new Planet('planet".($j+1)."', document.getElementById('planet".($j+1)."'), 0, ".$planetRValues[$j].", ".$planetDaValues[$j].");";   
           }
