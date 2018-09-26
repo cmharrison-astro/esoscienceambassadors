@@ -12,10 +12,6 @@
     gtag('config', 'UA-125571662-1');
   </script>
 
-  <script>
-    window.onresize = function(){ location.reload(); }
-  </script>
-
   <title>Biggest Eye on the Sky</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
