@@ -3,7 +3,8 @@ const style = window.getComputedStyle(element);
 const widthString = style.getPropertyValue('width');
 const widthInteger = Number(widthString.substring(0, widthString.length - 2));
 const center = widthInteger / 2;
-const magicNumber = 5;
+const magicNumber = 4;
+const magicNumberX = 0;
 
 class Planet {
   constructor(name, htmlElement, orbitRadius, orbitalPeriod) {
@@ -14,7 +15,7 @@ class Planet {
     this.a = 0; // in radian
     this.x = 0;
     this.y = 0;
-    this.center = { x: center - magicNumber, y: 150 - magicNumber };
+    this.center = { x: center - magicNumberX, y: 147.5 - magicNumber };
 
     this.move = () => {
       this.a += this.orbitalPeriod;

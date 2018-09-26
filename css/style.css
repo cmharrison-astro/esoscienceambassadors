@@ -103,8 +103,8 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 .star {
   top: calc(50% - 10px);
   right: calc(50% - 10px);
-  width: 20px;
-  height: 20px;  
+  width: 15px;
+  height: 15px;  
   background-color: rgb(216, 190, 29);
   /* box-shadow: inset -30px -30px 30px rgba(0,0,0,0.25); */
 }

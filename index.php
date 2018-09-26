@@ -95,10 +95,10 @@
   <?php if(!isset($_COOKIE["comply_cookie"])) { ?>
     <div id="cookies";>
     <?php if ($lang == 'fr'){?>
-     <p>Notre site utilise des cookies. En continuant, nous assumons votre permission de déployer des cookies, comme détaillé dans notre <a onclick="modalOpen('privacy-policy-modal')"><u>politique de confidentialité.</u><button onclick="cookieBannerClose()">Fermer</button></p></div>";
+     <p>Notre site utilise des cookies. En continuant, nous assumons votre permission de déployer des cookies, comme détaillé dans notre <a onclick="modalOpen('privacy-policy-modal')"><u>politique de confidentialité.</u><button onclick="cookieBannerClose()">Fermer</button></p></div>
       <?php } ?>
     <?php if ($lang == 'en'){?>
-      <p>Our website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in our <a onclick="modalOpen('privacy-policy-modal')"><u>privacy policy</u></a>. <button onclick="cookieBannerClose()">Close</button></p></div>";
+      <p>Our website uses cookies. By continuing we assume your permission to deploy cookies, as detailed in our <a onclick="modalOpen('privacy-policy-modal')"><u>privacy policy</u></a>. <button onclick="cookieBannerClose()">Close</button></p></div>
     <?php } ?>
 
   <?php } ?>
@@ -251,7 +251,7 @@
 
           for ($j = 0; $j<$nPlanet; $j++){
             //calculate css/java parameters based on real data
-            $planetRValues[$j] = 165*$planetDistances[$j]/$maxPlanetDist;
+            $planetRValues[$j] = 150*$planetDistances[$j]/$maxPlanetDist;
             $planetSizeValues[$j] = 10*$planetMass[$j]/$maxPlanetMass;
             $planetDaValues[$j] = 0.005*$maxPlanetPeriod/$planetPeriods[$j];
 
@@ -266,19 +266,24 @@
           //if ($row['star_distance'] =! 0.0){echo '<b>Distance:</b> '.number_format($row['star_distance']*3.26156, 1, '.', ',').' light yrs<br />';}
           echo '<b>'.$facttxt.':</b> '.$row['interesting_fact'].'<br />';
           echo '<b>'.$planetsConfirmedtxt.'</b> '.$nPlanet.'<br />';
+          echo '</div>'; 
+          echo '<div class="w3-row w3-padding-small">';
           for ($j = 0; $j<$nPlanet; $j++){
-            echo $planetNames[$j].'<br />'; 
+            echo '<i>'.$planetNames[$j].'</i> <div class="w3-medium">(Mass='.number_format($planetMass[$j]*317.8, 2, '.', ',').' Earth Masses; Orbital Period='.number_format($planetPeriods[$j], 0, '.', ',').' Earth Days)</div>'; 
             //a='.$planetAvalues[$j].' dA='.$planetDaValues[$j].'size='. $planetSizeValues[$j].'<br />';  
             //echo "const planet".($j+1)." = new Planet('planet".($j+1)."', document.getElementById('planet".($j+1)."'), 0, ".$planetRValues[$j].", ".$planetDaValues[$j].");";   
           }
+          echo '<br /><div class="w3-small">Data for confirmed planets only, taken from: exoplanets.eu (July 2018)</div></div>';
           echo '</div>';
-
          } else{
            echo "Problem fetching exoplanet data";
          }
 
-         echo '</div>'; 
+        
+
 ?>
+
+
 
       </div>
     
