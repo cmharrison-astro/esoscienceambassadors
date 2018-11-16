@@ -464,9 +464,9 @@
       <h3>Website:</h3>
       <p>Chris Harrison; Jasmin Patel</p>
       <h3>ESO Ambassadors:</h3>
-      <p>Richard Anderson, Chiara Circosta, Jesús M. Corral-Santana, Jeremy Fensch, Chris Harrison, Aleksandra Hamanowicz, Miranda Jarvis, Hugo Messias, Annagrazia Puglisi, Miguel Querejeta, Jan Scholtz, Dominika Wylezalek, Anita Zanella</p>
+      <p>Richard Anderson, Chiara Circosta, Jesús M. Corral-Santana, Jeremy Fensch, Chris Harrison, Aleksandra Hamanowicz, Miranda Jarvis, Tereza Jerabkova, Hugo Messias, Stephen Molyneux, Lucy Moocraft, Annagrazia Puglisi, Miguel Querejeta, Jan Scholtz, Anita Zanella</p>
       <h3>Tremendous contributions from:</h3>
-      <p>Mylene Andre, Simon Borgniet (Observatory Meudon), Stella-Maria Chasiotis-Klingner, Anne-Laure Cheffot, Carlo Felice Manara, Tracy Garratt (Hertfordshire University), Tania Johnston, Romain Lucchesi, Mariya Lyubenova, Anna Miotello, Juliette Ortet, Elizabeth Russell, Saskia Schutt, Nicole Shearer, Nelma Silva, Alasdair Thomson (Manchester University), Wolfgang Vieser, Sebastian Wassill, Alex Weiss, Kate Wetherell (Manchester University)</p>
+      <p>Mylene Andre, Simon Borgniet (Observatory Meudon), Giuliana Cosentino; Stella-Maria Chasiotis-Klingner, Anne-Laure Cheffot, Carlo Felice Manara, Tracy Garratt (Hertfordshire University), Tania Johnston, Romain Lucchesi, Mariya Lyubenova, Sara Mancino; Anna Miotello, Juliette Ortet, Elizabeth Russell, Saskia Schutt, Nicole Shearer, Nelma Silva, Alasdair Thomson (Manchester University), Wolfgang Vieser, Giustina Vietri, Sebastian Wassill, Alex Weiss, Kate Wetherell (Manchester University)</p>
       <h3>Financial Support from ESO SSDF</h3>
     </div>
   </div>
