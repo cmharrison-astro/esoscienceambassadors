@@ -37,11 +37,11 @@
 
 <!--get language here-->
 <?php
-  $lang = $_GET['lang'];
+//  $lang = $_GET['lang'];
 
-  if (empty($lang)) {
+//  if (empty($lang)) {
     $lang='en';
-  }
+ // }
 ?>
 
 <!--get exoplanet here-->
@@ -79,13 +79,13 @@
     <div class="w3-col s3">
       <a href="#resources" class="w3-button w3-block w3-eso"><?=$resources_txt?></a>
     </div>  
-    <div class="w3-dropdown-hover w3-display-topright">
+   <!-- <div class="w3-dropdown-hover w3-display-topright">
       <button class="w3-button w3-black w3-small">Language <i class="arrow down"></i></button>
       <div id="Languages" class="w3-dropdown-content w3-bar-block w3-border">
           <a href="./?lang=fr" class="w3-bar-item w3-button">Fran&ccedilais</a>
           <a href="./?lang=en" class="w3-bar-item w3-button">English</a>
       </div>
-    </div>
+    </div>-->
   </div>
 
   <?php if(!isset($_COOKIE["comply_cookie"])) { ?>
@@ -413,7 +413,7 @@
           <div class="w3-display-bottomleft w3-tiny w3-text-white" style="padding-left:20px;padding-bottom:5px">ESO/Onsala Space Observatory/I. Lapkin</div>
         </div>
       </div>
-      <h5>ESO</h5>
+      <h5>ESO & IAU/h5>
       <div class="w3-row">
         <div class="w3-display-container w3-third w3-padding-small">
           <a href="https://www.eso.org/public/videos/archive/category/esocast/" target="_blank" data-toggle="tooltip" title="ESOCast">
@@ -423,6 +423,11 @@
         <div class="w3-display-container w3-third w3-padding-small">
           <a href="https://supernova.eso.org" target="_blank" data-toggle="tooltip" title="ESO Supernova">
           <img src="images/general/es-logo-blue.jpg" alt="ESO Supernova" style="width:100%">
+          </a>
+        </div>
+        <div class="w3-display-container w3-third w3-padding-small">
+          <a href="https://www.iau-100.org/" target="_blank" data-toggle="tooltip" title="IAU100">
+          <img src="images/general/iau100.jpg" alt="IAU100" style="width:100%">
           </a>
         </div>
       </div>
@@ -467,7 +472,7 @@
       <p>Richard Anderson, Chiara Circosta, Jesús M. Corral-Santana, Jeremy Fensch, Chris Harrison, Aleksandra Hamanowicz, Miranda Jarvis, Tereza Jerabkova, Hugo Messias, Stephen Molyneux, Lucy Moocraft, Annagrazia Puglisi, Miguel Querejeta, Jan Scholtz, Anita Zanella</p>
       <h3>Tremendous contributions from:</h3>
       <p>Mylene Andre, Simon Borgniet (Observatory Meudon), Giuliana Cosentino; Stella-Maria Chasiotis-Klingner, Anne-Laure Cheffot, Carlo Felice Manara, Tracy Garratt (Hertfordshire University), Tania Johnston, Romain Lucchesi, Mariya Lyubenova, Sara Mancino; Anna Miotello, Juliette Ortet, Elizabeth Russell, Saskia Schutt, Nicole Shearer, Nelma Silva, Alasdair Thomson (Manchester University), Wolfgang Vieser, Giustina Vietri, Sebastian Wassill, Alex Weiss, Kate Wetherell (Manchester University)</p>
-      <h3>Financial Support from ESO SSDF</h3>
+      <h3>Financial Support from ESO SSDF, SPIE and IAU</h3>
     </div>
   </div>
 
