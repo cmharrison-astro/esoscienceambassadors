@@ -469,10 +469,12 @@
       <h3>Website:</h3>
       <p>Chris Harrison; Jasmin Patel</p>
       <h3>ESO Ambassadors:</h3>
-      <p>Richard Anderson, Chiara Circosta, Jesús M. Corral-Santana, Jeremy Fensch, Chris Harrison, Aleksandra Hamanowicz, Miranda Jarvis, Tereza Jerabkova, Hugo Messias, Stephen Molyneux, Lucy Moocraft, Annagrazia Puglisi, Miguel Querejeta, Jan Scholtz, Anita Zanella</p>
+      <p>Richard Anderson; Fabrizio Arrigoni Battaia; Barnabás Barna; Chiara Circosta; Jesús M. Corral-Santana; Jérémy Fensch; Aleksandra Hamanowicz; Miranda Jarvis; Tereza Jerabkova; Chris Harrison; Rosita Kokotanekova; Kateryna Kravchenko; Dinko Milakovic; Hugo Messias; Stephen Molyneux; Annagrazia Puglisi; Miguel Querejeta; Jan Scholtz; Anita Zanella.</p>
+      <h3>Non-ESO Ambassadors:</h3>
+      <p>Simon Borgniet (Observatory Meudon); Lorraine Coghill (Durham University); Tracy Garratt (Hertfordshire University); Lucy Moorcraft (TUM); Alasdair Thomson (Manchester University); Kate Wetherell (Manchester University); and 32 students/teachers from the following UK Schools: Wolsingham School, St Bede's Catholic School and Sixth Form College, Longfield Academy and St John's Catholic School. </p>
       <h3>Tremendous contributions from:</h3>
-      <p>Mylene Andre, Simon Borgniet (Observatory Meudon), Giuliana Cosentino; Stella-Maria Chasiotis-Klingner, Anne-Laure Cheffot, Carlo Felice Manara, Tracy Garratt (Hertfordshire University), Tania Johnston, Romain Lucchesi, Mariya Lyubenova, Sara Mancino; Anna Miotello, Juliette Ortet, Elizabeth Russell, Saskia Schutt, Nicole Shearer, Nelma Silva, Alasdair Thomson (Manchester University), Wolfgang Vieser, Giustina Vietri, Sebastian Wassill, Alex Weiss, Kate Wetherell (Manchester University)</p>
-      <h3>Financial Support from ESO SSDF, SPIE and IAU</h3>
+      <p>Tania Johnston; Wolfgang Vieser; Mylene Andre; Stella-Maria Chasiotis-Klingner; Anne-Laure Cheffot; Giuliana Cosentino; Romain Lucchesi; Mariya Lyubenova; Carlo Felice Manara; Sara Mancino; Anna Miotello; Juliette Ortet; Jasmin Patel; Elizabeth Russell; Saskia Schutt; Nicole Shearer; Nelma Silva; Giustina Vietri; Sebastian Wassill; Alex Weiss. </p>
+      <h3>Financial Support from ESO, SPIE and IAU</h3>
     </div>
   </div>
 
